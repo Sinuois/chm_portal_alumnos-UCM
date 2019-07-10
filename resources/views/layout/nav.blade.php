@@ -135,6 +135,9 @@
         <a class="waves-effect" href="/profesor/coordinador/addE">Agregar Empresa</a>
         <a class="waves-effect" href="/profesores_reserva">Reserva De Salas</a>
         <a class="waves-effect" href="/profesores_listado_reservas">Mis Reservas</a>
+    
+        <a class="waves-effect" href="/profesores_buscar_disponibilidad">Buscar Disponibilidad</a>
+        <a class="waves-effect" href="{{ asset('/Evento/index') }}">Calendario</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'director')
         <a class="waves-effect" href="/director">Perfil Director</a>
@@ -146,7 +149,7 @@
         <a class="waves-effect" href="/secretaria_listado_salas">Listado De Salas</a>
         <a class="waves-effect" href="/secretaria_listado_reservas">Listado De Reservas</a>
         <a class="waves-effect" href="/secretaria_confirmar_listado_reservas">Confirmar Reservas</a>
-
+        <a class="waves-effect" href="/secretaria_buscar_disponibilidad">Buscar Disponibilidad</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'empresa')
         <a class="waves-effect" href="/empresa">Perfil Empresa</a> 
@@ -169,7 +172,6 @@
 
 {{-- Photo Form --}}
 @include ('layout.photo_modal')
-
 <script>
   $(document).ready(function(){
     $('.tooltipped').tooltip();
