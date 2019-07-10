@@ -60,7 +60,7 @@
               <ul class="collapsible"> <!--Collapsible de información-->
                 <li>
                   <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
-                    &nbsp<b><h5 class="title">Reservas Canceladas</h5></b></h6> </div>
+                    &nbsp<b>Reservas Canceladas</b></h6> </div>
                   <div class="collapsible-body">
                     <form>
                       <div class="content table-responsive table-full-width">
