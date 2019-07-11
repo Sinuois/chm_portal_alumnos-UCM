@@ -1,7 +1,7 @@
-{{-- Restriccion de acceso - Leer comentario en layout.redirect--}}
+<!--{{-- Restriccion de acceso - Leer comentario en layout.redirect--}}
 @include('layout.redirect')
 
-@extends('layout.master')
+@extends('layout.master') -->
 
 @section('title')
   <title>Perfil Director de Carrera</title>
@@ -60,31 +60,38 @@
                 <ul class="collapsible"> <!--Collapsible de información-->
                   <li>
                     <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
-                      &nbsp<b>Información X</b></h6> </div>
+                      &nbsp<b>Revision de tesis</b></h6> </div>
                     <div class="collapsible-body">
                       <span>
                         <div class="section">
-                          1
-                        </div> 
-                      </span>
-                    </div>
-                    <div class="collapsible-body">
-                      <span>
-                          <div class="section">
-                            2
-                          </div> 
-                        </span>
-                    </div>
-                    <div class="collapsible-body">
-                      <span>
-                        3
-                      </span>
-                    </div>
-                    <div class="collapsible-body">
-                      <span>
-                        <div class="section">
-                          4
-                        </div> 
+                      <table class="table-border table-striped responsive-table">
+                        <thead>
+                          <tr>
+                            <th>Codigo Inscripcion</th>
+                            <th>Nombre de Tesis</th>
+                            <th>Fecha Publicacion</th>
+                            <th>revisar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <thead>
+                                 @foreach ($inscripciones as $inscripcion)
+                                   @if ($inscripcion->Estado=='Pendiente-D' )
+                                    <tr>
+                                      <td>{{$inscripcion->CodigoIncripcion}} </td>
+                                      <td>{{$inscripcion->Nombre_tesis}} </td>
+                                      <td>{{$inscripcion->FechaInscripcion}} </td>
+                                      <td>
+                                            <a href="{{ url("/director/inscripciontesis/{$inscripcion->id}")}}" class="btn waves-effect waves-light" style="background-color: #253e85;">revisar</a>
+                                      </td>
+                                    </tr>
+                                    @endif
+                                  @endforeach
+                                     
+                                </thead>
+                              </tbody>
+                            </table>
+                        </div>
                       </span>
                     </div>
                   </li>

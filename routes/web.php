@@ -30,6 +30,11 @@ Route::get('/estudiante/evaluacionpractica', 'EstudiantesController@evaluacionpr
 Route::post('/estudiante/evaluacionpractica', 'EstudiantesController@evaluacionpracticaenvio')->name('EvaluarPracticaEnvio');
 Route::get('/estudiante/novedadespractica', 'EstudiantesController@novedadespractica')->name('NovedadesPractica');
 Route::get('/estudiante/vistopractica', 'EstudiantesController@VistoPractica')->name('VistoPractica');
+Route::get('/estudiante/inscripciontesis', 'EstudiantesController@inscripcionestesis');
+Route::post('/estudiante/inscripcion/guardar', 'EstudiantesController@guardarinscripcionestesis');
+Route::get('/estudiante/inscripciontesis/listado', 'EstudiantesController@listado');
+Route::get('/estudiante/inscripciontesis/listado/editar/{id}', 'EstudiantesController@editartesis');
+Route::post('/estudiante/inscripciontesis/listado/guardar', 'EstudiantesController@guardarEdicionTesis');
 
 #Profesores#
 Route::post('/agregar_reserva_profesores', 'ProfesoresController@agregar_reserva');
@@ -48,13 +53,13 @@ Route::post('/agregar_reserva_profesores', 'ProfesoresController@agregar_reserva
 Route::get('/profesores_listado_reservas', 'ProfesoresController@listado_reservas')->name('Prof_listado_reservas');
 Route::post('/buscar_disponibilidad_profesores', 'ProfesoresController@buscar_disponibilidad');
 Route::get('reserva_profe/{id}/{fi}/{ff}/{nombre}/{capacidad}/{dia_semana}',['as' => 'Profesores.show2', 'uses' => 'ProfesoresController@show2']);
-
-
-
 Route::get('profesor_comentario/{id}/destroy',[
     'uses' => 'ProfesoresController@destroycomentario',
     'as'   => 'profesor_comentario.destroy']
 );
+Route::get('/profesor/inscripciontesis/{id}', 'ProfesoresController@inscripcionestesis');
+Route::post('profesor/inscripcion/guardar', 'ProfesoresController@guardarinscripcionestesis');
+Route::get('/profesor/inscripciones/detalles', 'ProfesoresController@listadotesis');
 
 
 #Coordinador de practicas#
@@ -67,6 +72,9 @@ Route::post('/profesor/coordinador/notas', 'CoordinadorController@SubirNotas')->
 
 #Director#
 Route::get('/director', 'DirectorController@index')->name('director');
+Route::get('/director/inscripciontesis/{id}', 'DirectorController@inscripcionestesis');
+Route::post('director/inscripcion/guardar', 'DirectorController@guardarinscripcionestesis');
+Route::get('/director/inscripciones/detalles', 'DirectorController@listadotesis');
 
 #Secretaria#
 Route::get('/secretaria', 'SecretariaController@index')->name('secretaria');
