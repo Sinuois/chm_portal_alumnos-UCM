@@ -5,7 +5,6 @@
 
 @section('title')
   <title>Perfil Profesor</title>
-  <title>Perfil Profesor</title>
 @endsection
 
 @section('styles')
@@ -52,42 +51,63 @@
       <div class="row">
         <div class="col s6">     
           <div class="card-panel z-depth-1"> <!--Rectangulito donde estará el título y el botón desplegable -->
-            <h5 class="left-align"><b>&nbspInformación nº1</b></h5> 
+            <h5 class="left-align"><b>Título de Ejemplo</b></h5> 
           </div>
         </div>      
-
         <div class="col s6">            
             <div class="card-panel z-depth-1"> <!--Rectangulito donde estará el título y el botón desplegable -->
               <h5 class="left-align"><b>&nbspInformación nº2</b></h5>
               <ul class="collapsible"> <!--Collapsible de información-->
                 <li>
                   <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
-                    &nbsp<b>Información X</b></h6> </div>
+                    &nbsp<b>Reservas Canceladas</b></h6> </div>
                   <div class="collapsible-body">
-                    <span>
-                      <div class="section">
-                        1
-                      </div> 
-                    </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                        <div class="section">
-                          2
-                        </div> 
-                      </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                      3
-                    </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                      <div class="section">
-                        4
-                      </div> 
-                    </span>
+                    <form>
+                      <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                              <thread>
+                              <th>ID sala</th>
+                              <th>Nombre sala</th>
+                              <th>Bloque</th>
+                              <th>Dia</th>
+                              <th>Comentario</th>
+                              <th></th>
+                              </thread>
+                          <tbody>
+                          @if( $i != 0)
+                          @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
+                          <tr>
+                            @if( $reser->id_user == Auth::user()->id)
+                              <td>{{$reser->id}}</td>
+                              <td>{{$reser->nombre}}</td>
+                              <td>{{$reser->bloque}}</td>
+                              @if( $reser->dia_semana == 1)
+                              <td>Lunes</td>
+                              @endif
+                              @if( $reser->dia_semana == 2)
+                              <td>Martes</td>
+                              @endif
+                              @if( $reser->dia_semana == 3)
+                              <td>Miercoles</td>
+                              @endif
+                              @if( $reser->dia_semana == 4)
+                              <td>Jueves</td>
+                              @endif
+                              @if( $reser->dia_semana == 5)
+                              <td>Viernes</td>
+                              @endif
+                              <td>{{$reser->comentario}}</td>
+                            @endif
+
+                            <td> <a  href="{{route('profesor_comentario.destroy', $reser->id)}}" class="waves-effect red darken-1 btn-small"><i class="pe-7s-trash">X</i></a></td>
+                          </tr>
+                          @endforeach
+                          @endif
+                          </tbody>
+                          </table>
+                      </div>
+                      <div class="clearfix"></div>
+                  </form>
                   </div>
                 </li>
               </ul>
@@ -107,8 +127,6 @@
                 </li>
               </ul>
             </div>
-
-  
         </div>
     @endif
   @endforeach

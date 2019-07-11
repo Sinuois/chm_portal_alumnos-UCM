@@ -52,10 +52,9 @@
         <div class="row">
           <div class="col s6">     
             <div class="card-panel z-depth-1"> <!--Rectangulito donde estará el título y el botón desplegable -->
-              <h5 class="left-align"><b>&nbspInformación nº1</b></h5> 
+              <h5 class="left-align"><b>Título de Ejemplo</b></h5> 
             </div>
           </div>      
-
           <div class="col s6">            
               <div class="card-panel z-depth-1"> <!--Rectangulito donde estará el título y el botón desplegable -->
                 <h5 class="left-align"><b>&nbspInformación nº2</b></h5>

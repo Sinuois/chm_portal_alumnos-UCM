@@ -40,6 +40,18 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <select name="dia_semana">
+            <option value="1">Lunes</option>
+            <option value="2">Martes</option>
+            <option value="3">Miercoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
+          </select>
+          <label class="black-text text-darken-2">Dia: </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input value="basura" id="disabled" type="hidden" class="validate" style="display:none">
           <label for="disabled" class="black-text text-darken-2">Dias De la Reserva </label>
           <br>
@@ -106,7 +118,7 @@
           <input type="hidden" name="estado" class="form-control" value="0" readonly="readonly" required>
         </div>
       </div>
-      <a class="waves-effect red darken-1 btn" href="/" >Cancel</a>
+      <a class="waves-effect red darken-1 btn" href="/" ><i>Cancelar</i> <i class="material-icons">close</i></a>
       <button class="btn waves-effect waves-light" type="submit" name="action">Crear Reserva
       <i class="material-icons right">send</i>
       </button>
