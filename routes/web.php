@@ -98,3 +98,33 @@ Route::post('/empresa/practicas/enviar', 'EmpresaController@InsercionPracticaPro
 Route::get('/empresa/practicas/mostrar', 'EmpresaController@MostrarPracticas');
 Route::post('/empresa/practicas/mostrar', 'EmpresaController@EliminarPracticas');
 Route::post('/empresa/practicas/editar', 'EmpresaController@VerificarPracticas');
+//rutas de inscripcion de tesis
+
+Route::get('/estudiante/inscripciontesis', 'EstudiantesController@inscripcionestesis');
+Route::post('/estudiante/inscripcion/guardar', 'EstudiantesController@guardarinscripcionestesis');
+Route::get('/estudiante/inscripciontesis/listado', 'EstudiantesController@listado');
+Route::get('/estudiante/inscripciontesis/listado/editar/{id}', 'EstudiantesController@editartesis');
+Route::post('/estudiante/inscripciontesis/listado/guardar', 'EstudiantesController@guardarEdicionTesis');
+
+
+Route::get('/profesor/inscripciontesis/{id}', 'ProfesoresController@inscripcionestesis');
+Route::post('profesor/inscripcion/guardar', 'ProfesoresController@guardarinscripcionestesis');
+Route::get('/profesor/inscripciones/detalles', 'ProfesoresController@listadotesis');
+
+
+
+Route::get('/director/inscripciontesis/{id}', 'DirectorController@inscripcionestesis');
+Route::post('director/inscripcion/guardar', 'DirectorController@guardarinscripcionestesis');
+Route::get('/director/inscripciones/detalles', 'DirectorController@listadotesis');
+
+Route::get('/secretaria/InscripcionesTesisAprobadas', 'SecretariaController@inscripcionestesis');
+
+Route::get('secretaria/imprimir_acta/{id}', 'SecretariaController@imprimir_acta');
+Route::get('secretaria/imprimir_formulario/{id}', 'SecretariaController@imprimir_formulario');
+
+Route::post('/secretaria/InscripcionesTesisAprobadas/busqueda', 'SecretariaController@buscar');
+Route::post('/secretaria/InscripcionesTesisAprobadas/filtar', 'SecretariaController@filtrar');
+
+
+
+Route::post('/secretaria/InscripcionesTesisAprobadas/subir','SecretariaController@subirArchivo')->name('subir');
