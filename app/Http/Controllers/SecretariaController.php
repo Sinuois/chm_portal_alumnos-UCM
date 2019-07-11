@@ -10,6 +10,11 @@ use Carbon\Carbon;
 use App\Salas;
 use App\Reserva;
 use App\User;
+use App\InscripcionesTesis;
+use App\PDF;
+use App\SubirArchivo;
+
+
 
 class SecretariaController extends Controller
 {
@@ -664,4 +669,109 @@ class SecretariaController extends Controller
       $sala -> delete();
       return redirect()->route('listado_salas');
     }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //          CONTROLADORES DE INSCRIPCIONES DE TESIS
+
+     public function inscripcionestesis()
+    {
+
+      $inscripciones = DB::table('inscripciones_tesis')->get();
+      
+  
+     // $inscripciones = InscripcionesTesis::All();
+      // dd($inscripcion);
+        return view ('Secretaria.InscripcionesTesis', compact('inscripciones'));
+    }
+
+
+
+
+  public function imprimir_formulario($id){ 
+
+  //  dd($id);
+    $d_inscripcion = DB::table('inscripciones_tesis')->where('id',$id)->get();
+     // $inscripciones = DB::table('inscripciones_tesis')->get();
+
+     foreach ($d_inscripcion as $inscripcion ) {
+      $alumno=$inscripcion->Alumno_id;
+      $profesor=$inscripcion->Profesor_id;
+     }
+     $d_alumno = DB::table('users')->where('id', $alumno)->get();
+     $d_profesor = DB::table('users')->where('id', $profesor)->get();
+ 
+      $pdf = \PDF::loadView('Secretaria.formulario_inscripcion',compact('d_inscripcion','d_alumno','d_profesor'));
+      return $pdf->download('Formulario_pdf.pdf');
+  }
+
+  public function imprimir_acta($id){ 
+
+  //  dd($id);
+    $d_inscripcion = DB::table('inscripciones_tesis')->where('id',$id)->get();
+     // $inscripciones = DB::table('inscripciones_tesis')->get();
+
+     foreach ($d_inscripcion as $inscripcion ) {
+      $alumno=$inscripcion->Alumno_id;
+      $profesor=$inscripcion->Profesor_id;
+     }
+     $d_alumno = DB::table('users')->where('id', $alumno)->get();
+     $d_profesor = DB::table('users')->where('id', $profesor)->get();
+ 
+      $pdf = \PDF::loadView('Secretaria.acta_pdf',compact('d_inscripcion','d_alumno','d_profesor'));
+      return $pdf->download('Acta_pdf.pdf');
+  }
+
+  public function buscar(Request $request){ 
+
+  //  dd($id);
+    
+    $rut= $request->input('rut');
+    $usuarios = DB::table('users')->get();
+    $id_user;
+    $cont=0;
+    #
+
+    foreach ($usuarios as $usuario) {
+
+      if ( $usuario->rut==$rut) {
+        $id_user=$usuario->id;
+        $user = DB::table('inscripciones_tesis')->where('Alumno_id',$id_user)->get();
+
+        $cont=$cont+1;
+      }
+
+    }
+
+    if($cont > 0)
+        return view('Secretaria.busqueda')->withDetails($user)->withQuery ( $rut );
+    else return view ('Secretaria.busqueda')->withMessage('No hay resultados');
+   
+  }
+
+   public function filtrar(Request $request){ 
+
+
+    $inicio= $request->input('fecha_inicio');
+    $final= $request->input('fecha_final');
+    
+
+
+
+        $inscripciones = DB::table('inscripciones_tesis')->whereBetween('FechaInscripcion', [$inicio, $final])->get();
+
+
+
+    return view ('Secretaria.filtrado', compact('inscripciones','inicio','final'));
+
+       
+   
+  }
+
+ public function subirArchivo(Request $request)
+ {
+        //Recibimos el archivo y lo guardamos en la carpeta storage/app/public
+        $dato = $request->file('archivo')->store('public');
+
+    return redirect('/secretaria');
+        
+ }
 }
