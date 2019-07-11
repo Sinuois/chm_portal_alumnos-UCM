@@ -63,15 +63,19 @@
       @if (Auth::user()->tipo_usuario == 'estudiante'){{-- Botones a los que tendrá acceso solo el estudiante --}}
         <a class="waves-effect" href="/estudiante">Perfil Estudiante</a> {{-- Copiar el botón para agregar redireccionamientos --}}
         <a class="waves-effect" href="/estudiante/practicasofertadas">Selección de prácticas</a>
+        <a class="waves-effect" href="/estudiante/inscripciontesis">Inscribir tesis</a>
+        <a class="waves-effect" href="/estudiante/inscripciontesis/listado">Editar inscripcion de tesis</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'profesor')
         <a class="waves-effect" href="/profesor">Perfil Profesor</a>
         <a class="waves-effect" href="/profesor/coordinador">Coordinar Practicas</a>
         <a class="waves-effect" href="/profesores_reserva">Reserva De Salas</a>
         <a class="waves-effect" href="/profesores_listado_reservas">Mis Reservas</a>
+        <a class="waves-effect" href="/profesor/inscripciones/detalles">Inscripciones de tesis</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'director')
         <a class="waves-effect" href="/director">Perfil Director</a>
+        <a class="waves-effect" href="/director/inscripciones/detalles">Inscripciones de tesis</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'secretaria')
         <a class="waves-effect" href="/secretaria">Perfil Secretaria</a>
@@ -80,6 +84,7 @@
         <a class="waves-effect" href="/secretaria_listado_salas">Listado De Salas</a>
         <a class="waves-effect" href="/secretaria_listado_reservas">Listado De Reservas</a>
         <a class="waves-effect" href="/secretaria_confirmar_listado_reservas">Confirmar Reservas</a>
+        <a class="waves-effect" href="/secretaria/InscripcionesTesisAprobadas">Revisar inscrip. de tesis aprobadas</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'empresa')
         <a class="waves-effect" href="/empresa">Perfil Empresa</a> 
