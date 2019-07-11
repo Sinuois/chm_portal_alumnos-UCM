@@ -116,7 +116,9 @@
     @if(Auth::check()) {{-- Verificamos que esté iniciada la sesión --}}
       @if (Auth::user()->tipo_usuario == 'estudiante'){{-- Botones a los que tendrá acceso solo el estudiante --}}
         <a class="waves-effect" href="/estudiante">Perfil Estudiante</a> {{-- Copiar el botón para agregar redireccionamientos --}}
-
+        <a class="waves-effect" href="/estudiante/practicasofertadas">Selección de prácticas</a>
+        <a class="waves-effect" href="/estudiante/inscripciontesis">Inscribir tesis</a>
+        <a class="waves-effect" href="/estudiante/inscripciontesis/listado">Editar inscripcion de tesis</a>
         @if(empty(Auth::user()->PostulacionPractica->where('estado','Aceptada')->first()))
           <a class="waves-effect" href="/estudiante/practicasofertadas">Selección de prácticas</a>
         @endif
@@ -135,12 +137,13 @@
         <a class="waves-effect" href="/profesor/coordinador/addE">Agregar Empresa</a>
         <a class="waves-effect" href="/profesores_reserva">Reserva De Salas</a>
         <a class="waves-effect" href="/profesores_listado_reservas">Mis Reservas</a>
-    
+        <a class="waves-effect" href="/profesor/inscripciones/detalles">Inscripciones de tesis</a>
         <a class="waves-effect" href="/profesores_buscar_disponibilidad">Buscar Disponibilidad</a>
         <a class="waves-effect" href="{{ asset('/Evento/index') }}">Calendario</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'director')
         <a class="waves-effect" href="/director">Perfil Director</a>
+        <a class="waves-effect" href="/director/inscripciones/detalles">Inscripciones de tesis</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'secretaria')
         <a class="waves-effect" href="/secretaria">Perfil Secretaria</a>
@@ -149,6 +152,7 @@
         <a class="waves-effect" href="/secretaria_listado_salas">Listado De Salas</a>
         <a class="waves-effect" href="/secretaria_listado_reservas">Listado De Reservas</a>
         <a class="waves-effect" href="/secretaria_confirmar_listado_reservas">Confirmar Reservas</a>
+        <a class="waves-effect" href="/secretaria/InscripcionesTesisAprobadas">Revisar inscrip. de tesis aprobadas</a>
         <a class="waves-effect" href="/secretaria_buscar_disponibilidad">Buscar Disponibilidad</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'empresa')

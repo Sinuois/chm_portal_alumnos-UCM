@@ -97,8 +97,8 @@ class UsersTableSeeder extends Seeder
         'direccion_procedencia' => 'Pasaje Ejemplo',
         'telefono' => '72111111',
         'celular' => '911111111',
-        'fecha_ingreso' => Carbon::parse('2015-01-01'),
-        'tipo_usuario' => 'estudiante',
+        'foto' => '',
+        'tipo_usuario' => 'director',
       ]);
       DB::table('users')->insert([ 
         'rut' => '7.777.777-7',
@@ -110,8 +110,10 @@ class UsersTableSeeder extends Seeder
         'direccion_procedencia' => 'Pasaje Ejemplo',
         'telefono' => '72111111',
         'celular' => '911111111',
-        'fecha_ingreso' => Carbon::parse('2015-01-01'),
-        'tipo_usuario' => 'estudiante',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
       ]);
       DB::table('users')->insert([ 
         'rut' => '8.888.888-8',
@@ -123,7 +125,10 @@ class UsersTableSeeder extends Seeder
         'direccion_procedencia' => 'Pasaje Ejemplo',
         'telefono' => '72111111',
         'celular' => '911111111',
-        'tipo_usuario' => 'empresa',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
       ]);
       DB::table('users')->insert([ 
         'rut' => '9.999.999-9',
@@ -147,7 +152,10 @@ class UsersTableSeeder extends Seeder
         'direccion_procedencia' => 'Pasaje Ejemplo',
         'telefono' => '72111111',
         'celular' => '911111111',
-        'tipo_usuario' => 'empresa',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
       ]);
     }
 }

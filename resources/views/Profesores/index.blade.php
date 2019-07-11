@@ -56,7 +56,7 @@
         </div>      
         <div class="col s6">            
             <div class="card-panel z-depth-1"> <!--Rectangulito donde estará el título y el botón desplegable -->
-              <h5 class="left-align"><b>&nbspInformación nº2</b></h5>
+              <h5 class="left-align"><b>&nbspInformación</b></h5>
               <ul class="collapsible"> <!--Collapsible de información-->
                 <li>
                   <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
@@ -115,12 +115,35 @@
               <ul class="collapsible"> <!--Collapsible de información-->
                 <li>
                   <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
-                    &nbsp<b>Información Y</b></h6> </div>
+                    &nbsp<b>Revisión tesis</b></h6> </div>
                   <div class="collapsible-body">
                     <span>
                       <div class="section">
-                        <h7><b>Ejemplo título</b></h7>
-                        <p><i>&nbsp&nbspInformación respectiva al ejemplo.</i></p>
+                        <table class="table-border table-striped responsive-table">
+                          <thead>
+                            <tr>
+                              <th>Codigo Inscripcion</th>
+                              <th>Semestre</th>
+                              <th>Fecha Publicacion</th>
+                              <th>revisar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <thead>
+                              @foreach ($inscripciones as $inscripcion)
+                              @if ($inscripcion->Estado=='Pendiente-P' )
+                                  <tr>
+                                    <td>{{$inscripcion->CodigoIncripcion}} </td>
+                                    <td>{{$inscripcion->Semestre}} </td>
+                                    <td>{{$inscripcion->FechaInscripcion}} </td>
+                                    <td>
+                                      <a href="{{ url("/profesor/inscripciontesis/{$inscripcion->id}")}}" class="btn waves-effect waves-light" style="background-color: #253e85;">revisar</a>
+                                  </td>
+                                @endif
+                              @endforeach
+                            </thead>
+                          </tbody>
+                        </table>
                       </div> 
                     </span>
                   </div>
