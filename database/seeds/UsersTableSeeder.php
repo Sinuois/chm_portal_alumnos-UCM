@@ -156,5 +156,81 @@ class UsersTableSeeder extends Seeder
             'celular' => '911111111',
             'tipo_usuario' => 'empresa',
           ]);
+        DB::table('users')->insert([ 
+          'rut' => '55.555.555-5',
+          'password' => bcrypt('123456789'),
+          'nombres' => 'Fernando Fermin',
+          'apellidos' => 'Caceres Rios',
+          'email' => 'directord@gmail.com',
+          'direccion_actual' => 'Calle Ejemplo',
+          'direccion_procedencia' => 'Pasaje Ejemplo',
+          'telefono' => '72111111',
+          'celular' => '911111111',
+          'foto' => '',
+          'tipo_usuario' => 'director',
+      ]);
+
+          DB::table('users')->insert([ 
+        'rut' => '44.444.444-4',
+        'password' => bcrypt('123456789'),
+        'nombres' => 'Felix Rodrigo',
+        'apellidos' => 'Molina Fernandes',
+        'email' => 'directofr@gmail.com',
+        'direccion_actual' => 'Calle Ejemplo',
+        'direccion_procedencia' => 'Pasaje Ejemplo',
+        'telefono' => '72111111',
+        'celular' => '911111111',
+        'foto' => '',
+        'tipo_usuario' => 'director',
+      ]);
+
+           DB::table('users')->insert([ 
+        'rut' => '99.999.999-9',
+        'password' => bcrypt('123456789'),
+        'nombres' => 'Marcos ',
+        'apellidos' => 'Toranzo',
+        'email' => 'profesodr@gmail.com',
+        'direccion_actual' => 'Calle Ejemplo',
+        'direccion_procedencia' => 'Pasaje Ejemplo',
+        'telefono' => '72111111',
+        'celular' => '911111111',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
+      ]);
+
+             DB::table('users')->insert([ 
+        'rut' => '11.111.111-1',
+        'password' => bcrypt('123456789'),
+        'nombres' => 'Marcos ',
+        'apellidos' => 'Mora',
+        'email' => 'profeffsor@gmail.com',
+        'direccion_actual' => 'Calle Ejemplo',
+        'direccion_procedencia' => 'Pasaje Ejemplo',
+        'telefono' => '72111111',
+        'celular' => '911111111',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
+      ]);
+
+              DB::table('users')->insert([ 
+        'rut' => '11.511.111-1',
+        'password' => bcrypt('123456789'),
+        'nombres' => 'Angelica ',
+        'apellidos' => 'Urrutia',
+        'email' => 'profesodfr@gmail.com',
+        'direccion_actual' => 'Calle Ejemplo',
+        'direccion_procedencia' => 'Pasaje Ejemplo',
+        'telefono' => '72111111',
+        'celular' => '911111111',
+        'foto' => '',
+        'cargo' => 'Cargo Ejemplo',
+        'departamento' => 'Departamento Ejemplo',
+        'tipo_usuario' => 'profesor',
+      ]);
+
     }
 }
