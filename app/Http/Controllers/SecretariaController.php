@@ -11,7 +11,6 @@ use App\Salas;
 use App\Reserva;
 use App\User;
 use App\InscripcionesTesis;
-use App\PDF;
 use App\SubirArchivo;
 use PDF;
 

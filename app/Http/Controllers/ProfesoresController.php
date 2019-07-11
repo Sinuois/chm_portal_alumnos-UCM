@@ -22,6 +22,8 @@ class ProfesoresController extends Controller
     {
 
         $professors = User::All();
+        $id_profesor = Auth::user()->id;
+        $inscripciones = DB::table('inscripciones_tesis')->where('Profesor_id', $id_profesor)->get();
         $id_reserva = DB::table('reserva')
                       ->select('reserva.id_sala')
                       ->where('reserva.estado', '=', 3)
@@ -35,14 +37,15 @@ class ProfesoresController extends Controller
                                  ['reserva.estado', '=', 3],
                                ])
                         ->get();
-          return view('Profesores.index', compact('professors','reserva','i'));
+          return view('Profesores.index', compact('professors','reserva','i','inscripciones'));
         }
         else {
           $i=0;
-          return view('Profesores.index', compact('professors','i'));
+          return view('Profesores.index', compact('professors','i','inscripciones'));
         }
 
     }
+
     public function mostrar_practicas()
     {
         $practicas= PostulacionesPractica::where('Estado', '=', 'Aprobado')->get();
@@ -791,19 +794,6 @@ class ProfesoresController extends Controller
    }
 
   //CONTROLADORES INSCRIPCION DE TESIS
-       public function index()
-    {
-        $professors = User::All();
-
-        $id_profesor = Auth::user()->id;
-        $inscripciones = DB::table('inscripciones_tesis')->where('Profesor_id', $id_profesor)->get();
-
-        //dd($inscripciones);
-        return view('Profesores.index', compact('professors','inscripciones'));
-
-    }
-
-
 
     public function inscripcionestesis($id)
     {

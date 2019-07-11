@@ -132,6 +132,10 @@ Route::get('secretaria_listado_salas/{id}/destroy',[
     'uses' => 'SecretariaController@destroysala',
     'as'   => 'secretaria_listado_salas.destroy']
 );
+Route::get('/secretaria/InscripcionesTesisAprobadas', 'SecretariaController@inscripcionestesis');
+Route::get('secretaria/imprimir_acta/{id}', 'SecretariaController@imprimir_acta');
+Route::get('secretaria/imprimir_formulario/{id}', 'SecretariaController@imprimir_formulario');
+Route::post('/secretaria/InscripcionesTesisAprobadas/subir','SecretariaController@subirArchivo')->name('subir');
 Route::get('lista_reserva/{id}',['as' => 'lista_reserva.show', 'uses' => 'SecretariaController@show']);
 Route::get('/secretaria_listado_reservas', 'SecretariaController@listado_reservas')->name('listado_reservas');
 Route::get('/secretaria_listado_salas', 'SecretariaController@listado_salas')->name('listado_salas');

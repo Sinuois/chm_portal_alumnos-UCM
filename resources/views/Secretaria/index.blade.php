@@ -60,32 +60,16 @@
               <ul class="collapsible"> <!--Collapsible de información-->
                 <li>
                   <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>
-                    &nbsp<b>Información X</b></h6> </div>
+                    &nbsp<b>Subir Documento</b></h6> </div>
                   <div class="collapsible-body">
-                    <span>
-                      <div class="section">
-                        1
-                      </div> 
-                    </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                        <div class="section">
-                          2
-                        </div> 
-                      </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                      3
-                    </span>
-                  </div>
-                  <div class="collapsible-body">
-                    <span>
-                      <div class="section">
-                        4
-                      </div> 
-                    </span>
+                    <h5 class="title" align="center">Subir Documento</h5>
+                    <br>
+                      <form method="POST" action="{{route('subir')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <label for="archivo"><b>Subir Archivo: </b></label><br>
+                        <input type="file" name="archivo" required>
+                        <button type="submit" class="btn waves-effect waves-light" style="background-color: #253e85;" >Subir Documento</button>
+                      </form>
                   </div>
                 </li>
               </ul>
