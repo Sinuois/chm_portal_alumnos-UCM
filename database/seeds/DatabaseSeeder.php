@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ReservaTableSeeder::class);
         $this->call(PreguntasTableSeeder::class);
         $this->call(EnCursoPracticasSeeder::class);
+        $this->call(CursoSeeder::class);
     }
 
     protected function truncarTablas(array $tables)

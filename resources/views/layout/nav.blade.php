@@ -116,6 +116,7 @@
     @if(Auth::check()) {{-- Verificamos que esté iniciada la sesión --}}
       @if (Auth::user()->tipo_usuario == 'estudiante'){{-- Botones a los que tendrá acceso solo el estudiante --}}
         <a class="waves-effect" href="/estudiante">Perfil Estudiante</a> {{-- Copiar el botón para agregar redireccionamientos --}}
+        <a class="waves-effect" href="/decisionToma">Solicitud de toma de ramos</a>
         <a class="waves-effect" href="/estudiante/practicasofertadas">Selección de prácticas</a>
         <a class="waves-effect" href="/estudiante/inscripciontesis">Inscribir tesis</a>
         <a class="waves-effect" href="/estudiante/inscripciontesis/listado">Editar inscripcion de tesis</a>
@@ -144,6 +145,7 @@
       @if (Auth::user()->tipo_usuario == 'director')
         <a class="waves-effect" href="/director">Perfil Director</a>
         <a class="waves-effect" href="/director/inscripciones/detalles">Inscripciones de tesis</a>
+        <a class="waves-effect" href="/decisionTomaD">Solicitudes de Ramos</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'secretaria')
         <a class="waves-effect" href="/secretaria">Perfil Secretaria</a>

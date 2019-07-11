@@ -52,4 +52,14 @@ class User extends Authenticatable
     public function UsuarioComentario(){
         return $this->hasMany(Comentario::class, 'alumnoid', 'id');
     }
+    
+    public function tomarcursos()
+    {
+        return $this->hasMany('App\TomarCurso','user_id');
+    }
+
+    public function tomarbotarcursos()
+    {
+        return $this->hasMany('App\TomaBotaCurso','user_id');
+    }
 }

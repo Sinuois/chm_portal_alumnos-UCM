@@ -17,6 +17,9 @@ use App\Comentario;
 use App\EnCursoPractica;
 use Carbon\Carbon;
 use DateTime;
+use App\Curso;
+use App\TomarCurso;
+use App\TomaBotaCurso;
 
 class EstudiantesController extends Controller
 {
@@ -257,5 +260,94 @@ class EstudiantesController extends Controller
         $VistoPostulacion->save();
         return "ok";
     }
+
+    public function tomacurso()
+    {
+        $cursos = Curso::All();
+        $user = User::find(Auth::User()->id);
+        return view('Estudiantes.Solicitud')->with('user',$user)->with('cursos',$cursos);
+    }
+
+    public function crea_toma_curso()
+    {
+        $user = User::find(Auth::User()->id);
+        $cursos = Curso::All();
+        return view('Estudiantes.create')->with('user',$user)->with('cursos',$cursos);
+    }
+
+//FUNCION QUE GUARDA EL CURSO SELECCIONADO
+    public function modal(Request $request){
+        $user = User::find(Auth::User()->id);
+        $cursos = Curso::All();
+
+        
+        //toma el nombre del curso y lo asocia a su codigo 
+        foreach($cursos as $curso){
+            if($request->nombre == $curso->nombre ){
+                $laid= $curso->id;
+            }
+        }
+        $tomacursos=TomarCurso::All();
+        foreach($tomacursos as $tomacurso){
+            if($tomacurso->user_id == $user->id){
+                if($tomacurso->curso_id == $laid){
+                    return redirect()->route('usuario.toma');           
+                }
+            }
+        }
+        $tomacurso = new TomarCurso();
+        $tomacurso->user_id = $user->id;
+        $tomacurso->curso_id = $laid;
+        $tomacurso->motivo = $request->motivo;
+        $tomacurso->save();
+        return redirect()->route('usuario.toma');
+    }   
+
+    public function eliminarToma($id)
+    {
+        $tomacurso = TomarCurso::find($id);
+        $tomacurso->delete();
+        return redirect()->route('usuario.toma');
+    }
+
+    public function botacurso()
+    {
+        $cursos = Curso::All();
+        $user = User::find(Auth::User()->id);
+        return view('Estudiantes.Bota')->with('user',$user)->with('cursos',$cursos);
+    }
+
+    public function eliminarBota($id)
+    {
+        $tomacurso = TomaBotaCurso::find($id);
+        $tomacurso->delete();
+        return redirect()->route('usuario.bota');
+    }
+
+    public function modal2(Request $request){
+        $user = User::find(Auth::User()->id);
+        $cursos = Curso::All();
+        
+        //toma el nombre del curso y lo asocia a su codigo 
+        foreach($cursos as $curso){
+            if($request->nombre == $curso->nombre){
+                $laid= $curso->id;
+            }
+        }
+
+        $tomacursos=TomaBotaCurso::All();
+        foreach($tomacursos as $tomacurso){
+            if($tomacurso->user_id == $user->id){
+                if($tomacurso->curso_id == $laid){
+                    return redirect()->route('usuario.bota');           
+                }
+            }
+        }
+        $tomacurso = new TomaBotaCurso();
+        $tomacurso->user_id = $user->id;
+        $tomacurso->curso_id = $laid;
+        $tomacurso->save();
+        return redirect()->route('usuario.bota');
+    } 
 
 }

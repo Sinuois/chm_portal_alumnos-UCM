@@ -35,6 +35,24 @@ Route::post('/estudiante/inscripcion/guardar', 'EstudiantesController@guardarins
 Route::get('/estudiante/inscripciontesis/listado', 'EstudiantesController@listado');
 Route::get('/estudiante/inscripciontesis/listado/editar/{id}', 'EstudiantesController@editartesis');
 Route::post('/estudiante/inscripciontesis/listado/guardar', 'EstudiantesController@guardarEdicionTesis');
+    # toma de ramos
+Route::get('/decisionToma',function(){
+    return view('Estudiantes.principal');
+})->name('toma.decisionToma');
+Route::get('/tomacurso','EstudiantesController@tomacurso')->name('usuario.toma');
+Route::get('/tomacurso/crea','EstudiantesController@crea_toma_curso')->name('crea.toma');
+Route::post('/tomado2','EstudiantesController@modal')->name('usuario.guarda2');
+Route::get('tomacurso{id}/destroy',[
+    'uses'=>'EstudiantesController@eliminarToma',
+    'as'=>'tomacurso.destroy'
+]);
+
+Route::get('/botacurso','EstudiantesController@botacurso')->name('usuario.bota');
+Route::post('/botado','EstudiantesController@modal2')->name('usuario.guarda3');
+Route::get('botacurso{id}/destroy',[
+    'uses'=>'EstudiantesController@eliminarBota',
+    'as'=>'botacurso.destroy'
+]);
 
 #Profesores#
 Route::post('/agregar_reserva_profesores', 'ProfesoresController@agregar_reserva');
@@ -75,6 +93,16 @@ Route::get('/director', 'DirectorController@index')->name('director');
 Route::get('/director/inscripciontesis/{id}', 'DirectorController@inscripcionestesis');
 Route::post('director/inscripcion/guardar', 'DirectorController@guardarinscripcionestesis');
 Route::get('/director/inscripciones/detalles', 'DirectorController@listadotesis');
+    # toma de ramos
+Route::get('/decisionTomaD','DirectorController@solicitudGrafico')->name('toma.decisionToma2');
+Route::get('/directorToma','DirectorController@tomaIndex')->name('director.toma');
+Route::put('/directorEdita/{id}','DirectorController@tomaEdit')->name('director.edita');
+Route::get('/directorTomaBota','DirectorController@botaIndex')->name('director.bota');
+Route::put('/directorEditaBota/{id}','DirectorController@botaEdit')->name('director.botaedita');
+Route::get('/directorRamos','DirectorController@ramoIndex')->name('director.cursos');
+Route::get('botaramo{id}/destroy','DirectorController@ramoDestroy')->name('director.cursodestroy');
+Route::post('/cursoguardado','DirectorController@modal')->name('curso.guardado');
+Route::put('/editarcurso/{id}', 'DirectorController@ramoEditar')->name('director.editaRamo');
 
 #Secretaria#
 Route::get('/secretaria', 'SecretariaController@index')->name('secretaria');
