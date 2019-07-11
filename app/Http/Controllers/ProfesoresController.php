@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Salas;
 use App\Reserva;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use App\InscripcionesTesis;
 
 
 class ProfesoresController extends Controller
@@ -607,4 +609,88 @@ class ProfesoresController extends Controller
         return redirect('/profesores_reserva')->with('status_reserva', 'Se ha ingresado la Reserva correctamente');
 
    }
+    //---------------------------------------------------------------------------------------------7
+   //CONTROLADORES INSCRIPCION DE TESIS
+
+
+       public function index()
+    {
+        $professors = User::All();
+
+        $id_profesor = Auth::user()->id;
+        $inscripciones = DB::table('inscripciones_tesis')->where('Profesor_id', $id_profesor)->get();
+
+        //dd($inscripciones);
+        return view('Profesores.index', compact('professors','inscripciones'));
+
+    }
+
+
+
+    public function inscripcionestesis($id)
+    {
+
+       $id_profe = Auth::user()->id;
+
+       $inscripcion = new InscripcionesTesis;
+
+
+        $inscripciones = DB::table('inscripciones_tesis')->where('id', $id)->get();
+      //  dd($inscripciones);
+
+        foreach ($inscripciones as $inscripcion1) {
+          $inscripcion=$inscripcion1;
+
+        }
+
+        $id_director = $inscripcion->Director_id;
+        $id_alumno = $inscripcion->Alumno_id;
+
+        $profesor = DB::table('users')->where('id', $id_profe)->get();
+
+        $alumno = DB::table('users')->where('id', $id_alumno)->get();
+        $director = DB::table('users')->where('id', $id_director)->get();
+
+
+
+
+
+
+        return view ('Profesores.InscripcionTesis', compact('inscripciones','profesor','alumno','director'));
+
+    }
+
+
+
+    public function listadotesis()
+    {
+       $inscripciones = new InscripcionesTesis;
+        $id = Auth::user()->id;
+
+          $inscripciones = DB::table('inscripciones_tesis')->where('Profesor_id', $id)->paginate(6);
+      // dd($inscripcion);
+        return view ('Profesores.Detalles', compact('inscripciones'));
+
+    }
+
+
+
+     public function guardarinscripcionestesis(Request $request)
+    {
+        $inscripcion = new InscripcionesTesis;
+        $id_inscripcion = $request->input('id');
+
+
+        DB::table('inscripciones_tesis')
+            ->where('id', $id_inscripcion)
+            ->update(array( 'comision1' => $request->input('comision1'),
+             'comision2' => $request->input('comision2'),
+             'comision3' => $request->input('comision3'),
+             'estado' => $request->input('estado'),
+             'estado' => ('Pendiente-D'),
+        ));
+
+
+       return redirect('/profesor');
+    }
 }
