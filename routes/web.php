@@ -161,6 +161,9 @@ Route::get('secretaria_listado_salas/{id}/destroy',[
     'as'   => 'secretaria_listado_salas.destroy']
 );
 Route::get('/secretaria/InscripcionesTesisAprobadas', 'SecretariaController@inscripcionestesis');
+Route::get('/secretaria/formulario_correo', 'SecretariaController@formulario_correo');
+Route::get('/secretaria/{nombre}/{correo}/agregar_destinatario', 'SecretariaController@agregar_destinatario');
+Route::get('/secretaria/enviar_correo', 'SecretariaController@enviar_correo');
 Route::get('secretaria/imprimir_acta/{id}', 'SecretariaController@imprimir_acta');
 Route::get('secretaria/imprimir_formulario/{id}', 'SecretariaController@imprimir_formulario');
 Route::post('/secretaria/InscripcionesTesisAprobadas/subir','SecretariaController@subirArchivo')->name('subir');

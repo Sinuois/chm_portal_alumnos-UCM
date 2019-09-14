@@ -10,9 +10,13 @@ use Carbon\Carbon;
 use App\Salas;
 use App\Reserva;
 use App\User;
+use App\Destinatario;
 use App\InscripcionesTesis;
 use App\SubirArchivo;
 use PDF;
+use Mail;
+use App\Mail\MailMensaje;
+
 
 class SecretariaController extends Controller
 {
@@ -22,6 +26,44 @@ class SecretariaController extends Controller
         $secretaries = User::All();
         return view('Secretaria.index', compact('secretaries'));
     }
+
+    public function formulario_correo()
+    {
+      Destinatario::truncate(); //Cada vez que se entre al formulario, se borran los destinatarios almacenados
+      $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
+        $query->select('correo')->from('destinatarios_correo'); 
+      })->get();
+      
+      return view('Secretaria.formulario_correo', compact('alumnos'));
+    }
+
+    public function agregar_destinatario($nombre, $correo)
+    {      
+      $chequeo_existencia = Destinatario::where('correo', '=', $correo)->first(); //Ver si existe algún elemento repetido
+      if ($chequeo_existencia === null) { //Si no hay ninguno repetido, crear nuevo
+        $destinatario = new Destinatario;
+        $destinatario->nombre = $nombre;
+        $destinatario->correo = $correo;
+        $destinatario->save();
+      }
+
+      $destinatarios = Destinatario::All();
+
+      $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
+        $query->select('correo')->from('destinatarios_correo'); 
+      })->get();
+      return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
+    }
+
+    public function enviar_correo()
+    {
+      $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
+      Mail::to($destinatarios)->send(new MailMensaje());
+      return view('\home');
+    }
+
+
+
     public function listado_reservas()
     {
       $reserva = DB::table('reserva')

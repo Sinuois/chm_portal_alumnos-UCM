@@ -156,6 +156,7 @@
         <a class="waves-effect" href="/secretaria_confirmar_listado_reservas">Confirmar Reservas</a>
         <a class="waves-effect" href="/secretaria/InscripcionesTesisAprobadas">Revisar inscrip. de tesis aprobadas</a>
         <a class="waves-effect" href="/secretaria_buscar_disponibilidad">Buscar Disponibilidad</a>
+        <a class="waves-effect" href="/secretaria/formulario_correo">Enviar correo</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'empresa')
         <a class="waves-effect" href="/empresa">Perfil Empresa</a> 
