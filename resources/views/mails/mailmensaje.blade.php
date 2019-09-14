@@ -6,6 +6,6 @@
     <title>Mensaje de Portal UCM</title>
 </head>
 <body>
-    <p>¡Hola!</p>
+    <p>{{$mensaje}}</p>
 </body>
 </html>

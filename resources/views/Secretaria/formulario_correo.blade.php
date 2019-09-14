@@ -15,17 +15,24 @@
 <div class='row justify-content-center'>
         <div class='row'>
           <div class="col s12 ">
-            <div class='card-panel white'>
-      
-              <p>
-              
-      
-                <h2 class='center-align'>Seleccionar alumnos para envío de correo</h2>
+            <div class='card-panel white'>   
+              <p>                   
+                <h3 class='center-align'>Seleccionar alumnos para envío de correo</h3>
                 <h4>Alumnos seleccionados: </h4>
-                @if (!empty($destinatarios))
+                @if($destinatarios->isnotEmpty())
                     @foreach ($destinatarios as $destinatario)
-                        {{$destinatario->nombre}}
+                    <form action="{{action('SecretariaController@borrar_destinatario', $destinatario['id'])}}" method="post">
+                        {{csrf_field()}}    
+                        <input name="_method" type="hidden" value="DELETE">
+                        
+                        <button class='btn red darken-4' type="submit">
+                            {{$destinatario->nombre}} 
+                        </button>
+                    </form>
+                    &nbsp
                     @endforeach
+                @else
+                    Ninguno
                 @endif
       
                 <br><br>
@@ -50,10 +57,21 @@
                 </table>     
               </p>
             </div>
+            @if($destinatarios->isnotEmpty())
+            <br>
+            <form method="get" action="{{ url('/secretaria/enviar_correo') }}">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" name="mensaje" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Mensaje</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+            </form>
+          @endif
           </div>
         </div>
       </div>
-      <button class="btn btn-primary" onclick="window.location.href='/secretaria/enviar_correo'">Enviar</button>               
+
+                    
 
 @endsection
 

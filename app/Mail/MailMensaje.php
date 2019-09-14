@@ -10,12 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class MailMensaje extends Mailable
 {
     use Queueable, SerializesModels;
+    public $mensaje;
 
-    //public $correo;
-
-    public function __construct() //public function __construct(Correo $correo)
+    public function __construct($mensaje)
     {
-        //$this->correo = $correo;
+        $this->mensaje = $mensaje;
     }
     public function build()
     {

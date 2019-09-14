@@ -33,8 +33,8 @@ class SecretariaController extends Controller
       $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
         $query->select('correo')->from('destinatarios_correo'); 
       })->get();
-      
-      return view('Secretaria.formulario_correo', compact('alumnos'));
+      $destinatarios = Destinatario::All();
+      return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
     }
 
     public function agregar_destinatario($nombre, $correo)
@@ -55,14 +55,22 @@ class SecretariaController extends Controller
       return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
     }
 
-    public function enviar_correo()
-    {
-      $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
-      Mail::to($destinatarios)->send(new MailMensaje());
-      return view('\home');
+    public function borrar_destinatario($id) {
+      $destinatario = \App\Destinatario::find($id);
+      $destinatario->delete();
+      $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
+        $query->select('correo')->from('destinatarios_correo'); 
+      })->get();
+      $destinatarios = Destinatario::All();
+      return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
     }
 
-
+    public function enviar_correo(Request $request)
+    {
+      $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
+      Mail::to($destinatarios)->send(new MailMensaje($request->input('mensaje')));
+      return view('\home');
+    }
 
     public function listado_reservas()
     {
