@@ -18,17 +18,30 @@
             <div class='card-panel white'>   
               <p>                   
                 <h3 class='center-align'>Seleccionar alumnos para envío de correo</h3>
+                <?php $chequear_correo = config('mail.host') ?>
+                @if ($chequear_correo == 'smtp.office365.com')
+                  Enviar desde correo: Hotmail
+                  <?php $tipo_mail = 'hotmail' ?>
+                @else
+                  @if ($chequear_correo == 'smtp.gmail.com')
+                    Enviar desde correo: Gmail
+                    <?php $tipo_mail = 'gmail' ?>
+                  @endif
+                @endif
+                <a class='btn-floating waves-effect blue darken-4' style="position: relative; left: 10px" href='/secretaria/cambiar_a/{{$tipo_mail}}' role="button">
+                  <i class='material-icons'>loop</i>
+                </a> 
                 <h4>Alumnos seleccionados: </h4>
                 @if($destinatarios->isnotEmpty())
                     @foreach ($destinatarios as $destinatario)
-                    <form action="{{action('SecretariaController@borrar_destinatario', $destinatario['id'])}}" method="post">
+                     <form action="{{action('SecretariaController@borrar_destinatario', $destinatario['id'])}}" method="post">
                         {{csrf_field()}}    
                         <input name="_method" type="hidden" value="DELETE">
                         
                         <button class='btn red darken-4' type="submit">
                             {{$destinatario->nombre}} 
                         </button>
-                    </form>
+                    </form> 
                     &nbsp
                     @endforeach
                 @else
@@ -48,7 +61,7 @@
                       <td>{{$alumno->apellidos}}</td>
       
                       <td>
-                      <a class='btn-floating waves-effect blue darken-4' href='/secretaria/{{$alumno->apellidos}}/{{$alumno->email}}/agregar_destinatario' role="button">
+                      <a class='btn-floating waves-effect blue darken-4' href='/secretaria/{{$alumno->apellidos}}/{{$alumno->email}}/{{$tipo_mail}}/agregar_destinatario' role="button">
                           <i class='material-icons'>add</i>
                         </a>
                       </td>
@@ -64,7 +77,9 @@
                     <textarea id="textarea1" name="mensaje" class="materialize-textarea"></textarea>
                     <label for="textarea1">Mensaje</label>
                 </div>
+                <input id="tipo_mail" type="hidden" name ="tipo_mail" value="{{$tipo_mail}}" >
                 <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+                
             </form>
           @endif
           </div>

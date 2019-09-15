@@ -16,6 +16,7 @@ use App\SubirArchivo;
 use PDF;
 use Mail;
 use App\Mail\MailMensaje;
+Use Config;
 
 
 class SecretariaController extends Controller
@@ -29,7 +30,16 @@ class SecretariaController extends Controller
 
     public function formulario_correo()
     {
+      Config::set('mail.host', 'smtp.gmail.com');
+      Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+      Config::set('mail.password', 'ioyqjalfnikirwhg');
+      Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+      Config::set('mail.from.name', 'UCM');
+      Config::set('mail.encryption', 'tls');
+      Config::set('mail.port', 587);
+
       Destinatario::truncate(); //Cada vez que se entre al formulario, se borran los destinatarios almacenados
+
       $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
         $query->select('correo')->from('destinatarios_correo'); 
       })->get();
@@ -37,7 +47,7 @@ class SecretariaController extends Controller
       return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
     }
 
-    public function agregar_destinatario($nombre, $correo)
+    public function agregar_destinatario($nombre, $correo, $tipo_mail)
     {      
       $chequeo_existencia = Destinatario::where('correo', '=', $correo)->first(); //Ver si existe algún elemento repetido
       if ($chequeo_existencia === null) { //Si no hay ninguno repetido, crear nuevo
@@ -45,6 +55,26 @@ class SecretariaController extends Controller
         $destinatario->nombre = $nombre;
         $destinatario->correo = $correo;
         $destinatario->save();
+      }
+
+      if ($tipo_mail == 'gmail') {
+        Config::set('mail.host', 'smtp.gmail.com');
+        Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.password', 'ioyqjalfnikirwhg');
+        Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
+      }
+
+      if ($tipo_mail == 'hotmail') {
+        Config::set('mail.host', 'smtp.office365.com'); 
+        Config::set('mail.username', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.password', 'calidadsoftware19'); 
+        Config::set('mail.from.address', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
       }
 
       $destinatarios = Destinatario::All();
@@ -61,15 +91,75 @@ class SecretariaController extends Controller
       $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
         $query->select('correo')->from('destinatarios_correo'); 
       })->get();
+
+      Config::set('mail.host', 'smtp.gmail.com');
+      Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+      Config::set('mail.password', 'ioyqjalfnikirwhg');
+      Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+      Config::set('mail.from.name', 'UCM');
+      Config::set('mail.encryption', 'tls');
+      Config::set('mail.port', 587);
+
       $destinatarios = Destinatario::All();
       return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
     }
 
     public function enviar_correo(Request $request)
     {
+      $tipo_mail = $request->input('tipo_mail');
+
+      if ($tipo_mail == 'gmail') {
+        Config::set('mail.host', 'smtp.gmail.com');
+        Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.password', 'ioyqjalfnikirwhg');
+        Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
+      }
+      if ($tipo_mail == 'hotmail') {
+        Config::set('mail.host', 'smtp.office365.com'); 
+        Config::set('mail.username', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.password', 'calidadsoftware19'); 
+        Config::set('mail.from.address', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
+      }      
       $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
       Mail::to($destinatarios)->send(new MailMensaje($request->input('mensaje')));
-      return view('\home');
+      return redirect('/home');
+    }
+
+    public function cambiar_tipo_mail($tipo_mail)
+    {
+      if ($tipo_mail == 'hotmail') {
+        Config::set('mail.host', 'smtp.gmail.com');
+        Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.password', 'ioyqjalfnikirwhg');
+        Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
+      }
+
+      if ($tipo_mail == 'gmail') {
+        Config::set('mail.host', 'smtp.office365.com'); 
+        Config::set('mail.username', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.password', 'calidadsoftware19'); 
+        Config::set('mail.from.address', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.from.name', 'UCM');
+        Config::set('mail.encryption', 'tls');
+        Config::set('mail.port', 587);
+      }
+
+      $destinatarios = Destinatario::All();
+
+      $alumnos = DB::table('users')->where('tipo_usuario', 'estudiante')->whereNotIn('email',function($query) {
+        $query->select('correo')->from('destinatarios_correo'); 
+      })->get();
+      return view('Secretaria.formulario_correo', compact('alumnos', 'destinatarios'));
+      
     }
 
     public function listado_reservas()
