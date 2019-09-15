@@ -18,6 +18,6 @@ class MailMensaje extends Mailable
     }
     public function build()
     {
-        return $this->subject('Mensaje de secretaría')->view('mails.mailmensaje');
+        return $this->subject('Mensaje de Portal UCM')->view('mails.mailmensaje');
     }
 }

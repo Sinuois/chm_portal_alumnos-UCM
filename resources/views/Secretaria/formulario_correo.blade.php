@@ -31,6 +31,17 @@
                 <a class='btn-floating waves-effect blue darken-4' style="position: relative; left: 10px" href='/secretaria/cambiar_a/{{$tipo_mail}}' role="button">
                   <i class='material-icons'>loop</i>
                 </a> 
+
+                <form method="get" action="{{ url('/secretaria/busqueda_estudiante_mail') }}">
+                  <div class="input-field col s2">
+                      <input id="busqueda" name="busqueda" placeholder="Ingresar búsqueda" style="search">
+                  </div>
+                  <input id="tipo_mail" type="hidden" name ="tipo_mail" value="{{$tipo_mail}}" >
+                  <br><br><br>
+                  <button style="position: relative; top: 10px; right: 260px" class="btn waves-effect waves-light" type="submit">Buscar</button>      
+              </form>
+              <br><br>
+
                 <h4>Alumnos seleccionados: </h4>
                 @if($destinatarios->isnotEmpty())
                     @foreach ($destinatarios as $destinatario)
@@ -56,12 +67,14 @@
                     <th width="100">Agregar destinatario</th>
                   </tr>
                   @foreach ($alumnos as $alumno)
+
+                    <?php $nombre_completo = $alumno->nombres . ' ' . $alumno->apellidos ?>
                     <tr>
       
-                      <td>{{$alumno->apellidos}}</td>
+                      <td>{{$nombre_completo}}</td>
       
                       <td>
-                      <a class='btn-floating waves-effect blue darken-4' href='/secretaria/{{$alumno->apellidos}}/{{$alumno->email}}/{{$tipo_mail}}/agregar_destinatario' role="button">
+                      <a style="position: relative; left: 50px" class='btn-floating waves-effect blue darken-4' href='/secretaria/{{$nombre_completo}}/{{$alumno->email}}/{{$tipo_mail}}/agregar_destinatario' role="button">
                           <i class='material-icons'>add</i>
                         </a>
                       </td>
