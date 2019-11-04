@@ -15,7 +15,22 @@
 <div style="position: relative; top: 1px">
   @foreach ($companies as $company) {{-- Obtención de los datos de la Empresa --}}
     @if ($company->id == Auth::user()->id) 
-        
+    
+    <?php //se agrega este extracto en php para mostrar los puntos y guion del rut sin modificarlo en la base de datos.
+    $rut_original = $company->rut; // se extrae el valor de la base de datos.
+    if (strlen($rut_original) == 8) { //si el largo del rut es de 8 números debería verse como 1.234.567-8
+      $posicion = 1; //variable definida para indicar la posicion de algun caracter del rut
+    }
+    if (strlen($rut_original) == 9) { //largo del rut es 9, implica 12.345.678-9
+      $posicion = 2; //se inicia la posicion en 2 para agregar el punto entre el "2" y el "3"
+    } //la funcion substr_replace se usa para agregar caracteres entre medio de otros.
+    $rut_modificado = substr_replace($rut_original, ".", $posicion, 0); //se necesita el string, caracter a agregar, posicion y 0.
+    $rut_modificado = substr_replace($rut_modificado, ".", $posicion+4, 0); //es +4 porque cueta el caracter agergado antes.
+    $rut_modificado = substr_replace($rut_modificado, "-", $posicion+8, 0);
+
+    ?>
+
+
         <div class="row">
             <div class="col s12"> 
                 <h5 class="left-align"><i class="material-icons">person</i><b>&nbspDatos Personales</b></h5>    
@@ -29,7 +44,7 @@
                     </div>
                     <div class="col s9" style="position: relative; top: 0px"> 
                         <h6>&nbsp{{$company->nombres}}&nbsp{{$company->apellidos}}</h6> 
-                        <h6>&nbsp{{$company->rut}}</h6>
+                        <h6>&nbsp{{$rut_modificado}}</h6>
                         <h6>&nbsp{{$company->email}}</h6>
                         <h6>&nbsp{{$company->telefono}}</h6>
                         <h6>&nbsp{{$company->celular}}</h6>
