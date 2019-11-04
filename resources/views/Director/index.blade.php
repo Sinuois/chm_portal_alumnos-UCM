@@ -17,13 +17,31 @@
     
     <?php //se agrega este extracto en php para mostrar los puntos y guion del rut sin modificarlo en la base de datos.
     $rut_original = $director->rut; // se extrae el valor de la base de datos.
-    if (strlen($rut_original) == 8) { //si el largo del rut es de 8 números debería verse como 1.234.567-8
+    if (strlen($rut_original) == 7) { //O sea que, contando verificador, serían 8 dígitos
+        $suma = $rut_original[6]*2+$rut_original[5]*3+$rut_original[4]*4+$rut_original[3]*5+$rut_original[2]*6+$rut_original[1]*7+$rut_original[0]*2;
+      }
+    if (strlen($rut_original) == 8) { //O sea que, contando verificador, serían 9 dígitos
+      $suma = $rut_original[7]*2+$rut_original[6]*3+$rut_original[5]*4+$rut_original[4]*5+$rut_original[3]*6+$rut_original[2]*7+$rut_original[1]*2+$rut_original[0]*3;
+    }
+    $final = 11 - ($suma%11);
+    $verificador = $final;
+    if ($final == 11) {
+      $verificador = 0;
+    }
+    if ($final == 10) {
+      $verificador = "K";
+    }
+    
+    $rut_con_verif = $rut_original.$verificador;
+    
+
+    if (strlen($rut_con_verif) == 8) { //si el largo del rut es de 8 números debería verse como 1.234.567-8
       $posicion = 1; //variable definida para indicar la posicion de algun caracter del rut
     }
-    if (strlen($rut_original) == 9) { //largo del rut es 9, implica 12.345.678-9
+    if (strlen($rut_con_verif) == 9) { //largo del rut es 9, implica 12.345.678-9
       $posicion = 2; //se inicia la posicion en 2 para agregar el punto entre el "2" y el "3"
     } //la funcion substr_replace se usa para agregar caracteres entre medio de otros.
-    $rut_modificado = substr_replace($rut_original, ".", $posicion, 0); //se necesita el string, caracter a agregar, posicion y 0.
+    $rut_modificado = substr_replace($rut_con_verif, ".", $posicion, 0); //se necesita el string, caracter a agregar, posicion y 0.
     $rut_modificado = substr_replace($rut_modificado, ".", $posicion+4, 0); //es +4 porque cueta el caracter agergado antes.
     $rut_modificado = substr_replace($rut_modificado, "-", $posicion+8, 0);
 
