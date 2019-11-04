@@ -148,4 +148,5 @@
 {{-- Agregamos los scripts para todos los elementos que utilicen JQuery al final para ayudar en tiempos de carga --}}
 @section('scripts')
   <script src={{ asset('js/nav_scripts.js') }}></script>
+  <script src={{ asset('js/limite_rut.js') }}></script>
 @endsection
