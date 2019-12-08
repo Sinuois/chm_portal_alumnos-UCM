@@ -104,6 +104,13 @@ Route::get('botaramo{id}/destroy','DirectorController@ramoDestroy')->name('direc
 Route::post('/cursoguardado','DirectorController@modal')->name('curso.guardado');
 Route::put('/editarcurso/{id}', 'DirectorController@ramoEditar')->name('director.editaRamo');
 
+Route::get('/director/formulario_correo', 'directorController@formulario_correo')->name('director/formulario_correo');
+Route::get('/director/{nombre}/{correo}/{tipo_mail}/agregar_destinatario', 'directorController@agregar_destinatario');
+Route::get('/director/cambiar_a/{tipo_mail}', 'directorController@cambiar_tipo_mail');
+Route::get('/director/busqueda_estudiante_mail', 'directorController@busqueda_estudiante_mail');
+Route::delete('/director/{id}/borrar_destinatario', 'directorController@borrar_destinatario');
+Route::get('/director/enviar_correo', 'directorController@enviar_correo');
+
 #Secretaria#
 Route::get('/secretaria', 'SecretariaController@index')->name('secretaria');
 Route::get('/secretaria_reserva', function () {
