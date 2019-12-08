@@ -1,5 +1,21 @@
-{{-- Restriccion de acceso - Leer comentario en layout.redirect-- }} No sé por qué denega el acceso por ahora
-{{-- @include('layout.redirect') --}} 
+@if(Auth::check())
+  {{-- Para los index se puede utilizar este modo de redireccionar por rol,
+       pero para los sub directorios de cada rol, se puede agregar este mismo codigo
+       pero se debe reemplazar el $uri por el rol correspondiente, EJ: 'estudiante' --}}
+  @php
+  @endphp
+  @if(Auth::user()->tipo_usuario != "secretaria")
+    @php
+      header("Location: /home");
+      die();
+    @endphp
+  @endif
+@else
+  @php
+    header("Location: /home");
+    die();
+  @endphp
+@endif 
 
 @extends('layout.master')
 
