@@ -146,6 +146,7 @@
         <a class="waves-effect" href="/director">Perfil Director</a>
         <a class="waves-effect" href="/director/inscripciones/detalles">Inscripciones de tesis</a>
         <a class="waves-effect" href="/decisionTomaD">Solicitudes de Ramos</a>
+        <a class="waves-effect" href="/director/formulario_correo">Enviar correo</a>
       @endif
       @if (Auth::user()->tipo_usuario == 'secretaria')
         <a class="waves-effect" href="/secretaria">Perfil Secretaria</a>

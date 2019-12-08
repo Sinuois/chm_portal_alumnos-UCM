@@ -171,20 +171,20 @@ class SecretariaController extends Controller
       $busqueda = $request->input('busqueda');
 
       if ($tipo_mail == 'hotmail') {
-        Config::set('mail.host', 'smtp.gmail.com');
-        Config::set('mail.username', 'portal.ucm.2019@gmail.com');
-        Config::set('mail.password', 'ioyqjalfnikirwhg');
-        Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.host', 'smtp.office365.com'); 
+        Config::set('mail.username', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.password', 'calidadsoftware19'); 
+        Config::set('mail.from.address', 'portal.ucm.2019@hotmail.com'); 
         Config::set('mail.from.name', 'UCM');
         Config::set('mail.encryption', 'tls');
         Config::set('mail.port', 587);
       }
 
       if ($tipo_mail == 'gmail') {
-        Config::set('mail.host', 'smtp.office365.com'); 
-        Config::set('mail.username', 'portal.ucm.2019@hotmail.com'); 
-        Config::set('mail.password', 'calidadsoftware19'); 
-        Config::set('mail.from.address', 'portal.ucm.2019@hotmail.com'); 
+        Config::set('mail.host', 'smtp.gmail.com');
+        Config::set('mail.username', 'portal.ucm.2019@gmail.com');
+        Config::set('mail.password', 'ioyqjalfnikirwhg');
+        Config::set('mail.from.address', 'portal.ucm.2019@gmail.com');
         Config::set('mail.from.name', 'UCM');
         Config::set('mail.encryption', 'tls');
         Config::set('mail.port', 587);

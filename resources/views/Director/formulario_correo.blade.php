@@ -4,7 +4,7 @@
        pero se debe reemplazar el $uri por el rol correspondiente, EJ: 'estudiante' --}}
   @php
   @endphp
-  @if(Auth::user()->tipo_usuario != "secretaria")
+  @if(Auth::user()->tipo_usuario != "director")
     @php
       header("Location: /home");
       die();
@@ -44,11 +44,11 @@
                     <?php $tipo_mail = 'gmail' ?>
                   @endif
                 @endif
-                <a class='btn-floating waves-effect blue darken-4' style="position: relative; left: 10px" href='/secretaria/cambiar_a/{{$tipo_mail}}' role="button">
+                <a class='btn-floating waves-effect blue darken-4' style="position: relative; left: 10px" href='/director/cambiar_a/{{$tipo_mail}}' role="button">
                   <i class='material-icons'>loop</i>
                 </a> 
 
-                <form method="get" action="{{ url('/secretaria/busqueda_estudiante_mail') }}">
+                <form method="get" action="{{ url('/director/busqueda_estudiante_mail') }}">
                   <div class="input-field col s2">
                       <input id="busqueda" name="busqueda" placeholder="Ingresar búsqueda" style="search">
                   </div>
@@ -61,7 +61,7 @@
                 <h4>Alumnos seleccionados: </h4>
                 @if($destinatarios->isnotEmpty())
                     @foreach ($destinatarios as $destinatario)
-                     <form action="{{action('SecretariaController@borrar_destinatario', $destinatario['id'])}}" method="post">
+                     <form action="{{action('directorController@borrar_destinatario', $destinatario['id'])}}" method="post">
                         {{csrf_field()}}    
                         <input name="_method" type="hidden" value="DELETE">
                         
@@ -90,7 +90,7 @@
                       <td>{{$nombre_completo}}</td>
       
                       <td>
-                      <a style="position: relative; left: 50px" class='btn-floating waves-effect blue darken-4' href='/secretaria/{{$nombre_completo}}/{{$alumno->email}}/{{$tipo_mail}}/agregar_destinatario' role="button">
+                      <a style="position: relative; left: 50px" class='btn-floating waves-effect blue darken-4' href='/director/{{$nombre_completo}}/{{$alumno->email}}/{{$tipo_mail}}/agregar_destinatario' role="button">
                           <i class='material-icons'>add</i>
                         </a>
                       </td>
@@ -101,7 +101,7 @@
             </div>
             @if($destinatarios->isnotEmpty())
             <br>
-            <form method="get" action="{{ url('/secretaria/enviar_correo') }}">
+            <form method="get" action="{{ url('/director/enviar_correo') }}">
                 <div class="input-field col s12">
                     <textarea id="textarea1" name="mensaje" class="materialize-textarea"></textarea>
                     <label for="textarea1">Mensaje</label>
