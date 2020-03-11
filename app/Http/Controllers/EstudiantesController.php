@@ -263,7 +263,7 @@ class EstudiantesController extends Controller
 
     public function tomacurso()
     {
-        $cursos = Curso::All();
+        $cursos = Curso::All(); 
         $user = User::find(Auth::User()->id);
         return view('Estudiantes.Solicitud')->with('user',$user)->with('cursos',$cursos);
     }
