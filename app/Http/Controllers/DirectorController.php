@@ -131,7 +131,12 @@ class DirectorController extends Controller
         Config::set('mail.port', 587);
       }      
       $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
-      Mail::to($destinatarios)->send(new MailMensaje($request->input('mensaje')));
+      $mensaje = $request->input('mensaje');
+      $enviado_por = 'Enviado por director ';
+      $nombres = Auth::user()->nombres;
+      $apellidos =  Auth::user()->apellidos;
+      $mensaje = $mensaje.$enviado_por.' '.$nombres.' '.$apellidos.'.';
+      Mail::to($destinatarios)->send(new MailMensaje($mensaje));
       return redirect('/home');
     }
 

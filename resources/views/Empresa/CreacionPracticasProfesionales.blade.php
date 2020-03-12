@@ -27,7 +27,7 @@
 @section('body')
 @if(session('errores'))
   <div class="card-panel teal accent-1">
-    Practica Profesional creada correctamente
+    Práctica Profesional creada correctamente
   </div>
 @endif
 <br>
@@ -35,7 +35,7 @@
   <div class="card-panel center">
     <form class="col s12" action="{{url('/empresa/practicas/carga')}}" method="post" >
       @csrf
-      <h5 class="center-align black-text text-darken-2">Formulario creacion practicas profesionales</h5>
+      <h4 class="center-align black-text text-darken-2">Formulario creación de Prácticas Profesionales</h4>
       <div class="row">
         <div class="input-field col s12">
           <label for="disabled" class="black-text text-darken-2">Nombre de la Empresa</label>
@@ -46,12 +46,12 @@
       <div class="row">
         <div class="input-field col s12">
           <input disabled value={{Auth::user()->telefono}} id="disabled" type="text" class="validate">
-          <label for="disabled" class="black-text text-darken-2">Telefono de la Empresa</label>
+          <label for="disabled" class="black-text text-darken-2">Teléfono de la Empresa</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <label for="disabled" class="black-text text-darken-2">Dias De Practica </label>
+          <label for="disabled" class="black-text text-darken-2">Días De Práctica </label>
           <br>
         </div>
       </div>
@@ -86,7 +86,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <label for="disabled" class="black-text text-darken-2">Horas De Practica </label>
+          <label for="disabled" class="black-text text-darken-2">Horas De Práctica </label>
         </div>
       </div>
       <div class="row">

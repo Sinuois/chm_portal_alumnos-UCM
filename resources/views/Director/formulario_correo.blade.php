@@ -28,12 +28,12 @@
 @endsection
 
 @section('body')
-<div class='row justify-content-center'>
+<div class='container'>
         <div class='row'>
           <div class="col s12 ">
             <div class='card-panel white'>   
               <p>                   
-                <h3 class='center-align'>Seleccionar alumnos para envío de correo</h3>
+                <h4 class='center-align'>Seleccionar alumnos para envío de correo</h4>
                 <?php $chequear_correo = config('mail.host') ?>
                 @if ($chequear_correo == 'smtp.office365.com')
                   Enviar desde correo: Hotmail
@@ -53,12 +53,12 @@
                       <input id="busqueda" name="busqueda" placeholder="Ingresar búsqueda" style="search">
                   </div>
                   <input id="tipo_mail" type="hidden" name ="tipo_mail" value="{{$tipo_mail}}" >
-                  <br><br><br>
-                  <button style="position: relative; top: 10px; right: 260px" class="btn waves-effect waves-light" type="submit">Buscar</button>      
+                  <br>
+                  <button style="position: relative; top: 5px;" class="btn waves-effect waves-light" type="submit">Buscar</button>      
               </form>
               <br><br>
 
-                <h4>Alumnos seleccionados: </h4>
+                <h6><b>Alumnos seleccionados:</b> </h6>
                 @if($destinatarios->isnotEmpty())
                     @foreach ($destinatarios as $destinatario)
                      <form action="{{action('directorController@borrar_destinatario', $destinatario['id'])}}" method="post">
@@ -74,6 +74,19 @@
                 @else
                     Ninguno
                 @endif
+
+           @if($destinatarios->isnotEmpty())
+            <br>
+            <form method="get" action="{{ url('/director/enviar_correo') }}">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" name="mensaje" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Mensaje</label>
+                </div>
+                <input id="tipo_mail" type="hidden" name ="tipo_mail" value="{{$tipo_mail}}" >
+                <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+                
+            </form>
+           @endif
       
                 <br><br>
       
@@ -99,7 +112,7 @@
                 </table>     
               </p>
             </div>
-            @if($destinatarios->isnotEmpty())
+            {{-- @if($destinatarios->isnotEmpty())
             <br>
             <form method="get" action="{{ url('/director/enviar_correo') }}">
                 <div class="input-field col s12">
@@ -110,10 +123,11 @@
                 <button class="btn waves-effect waves-light" type="submit">Enviar</button>
                 
             </form>
-          @endif
+          @endif --}}
           </div>
         </div>
       </div>
+    </div>
 
                     
 

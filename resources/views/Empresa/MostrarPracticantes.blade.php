@@ -43,11 +43,11 @@
 <br>
 <div class="container">
     <div class="card-panel center">
-      <h5>Informacion Practicantes</h5>
+      <h4>Información Practicantes</h4>
       <br>
   @foreach ($Practicantes as $Practicante)
-    <div class="card-panel center">
-      <table class="table-border table-striped responsive-table">
+    <div class="card-panel center cyan lighten-5">
+      <table class="table-border table-striped responsive-table centered">
         <thead>
           <tr>
             <th>Nombre Completo</th>
@@ -58,7 +58,7 @@
           </tr>
         </thead>
         <tbody>
-          <thead>
+          
             <tr>
               <form action="{{url('/empresa/practicas/mostrar')}}" method="post">
                   <input name="id" value={{$Practicante->alumno->id}} type="hidden">
@@ -70,7 +70,7 @@
                   @endphp --}}
                   <td>{{$Practicante->practica->Enfoque}}</td>
                   <td>{{$Practicante->practica->PuestoOfrecido}}</td>
-          </thead>
+          
         </tbody>
       </table>
     </div>

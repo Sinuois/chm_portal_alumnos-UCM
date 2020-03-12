@@ -12,7 +12,7 @@
 
 @section('body')
 <div>
-  <div class="row">
+  <div class="container">
     <div class="col s12 m8">
       <div class="card-panel" style="background-color: #253e85;">
         <span class="white-text">Bienvenido {{Auth::user()->nombres}}.
@@ -21,18 +21,19 @@
     </div>
   </div>
   <div class="container">
-    <div class="card-content  center">
-        <table class="table-border table-striped responsive-table">
+    <div class="card-panel center">
+      <h5 class="center-align black-text text-darken-2">Prácticas Finalizadas</h5>
+        <table class="table-border table-striped responsive-table centered">
           <thead>
             <tr>
-              <th>Almuno de practica</th>
+              <th>Almuno de práctica</th>
               <th>Puesto Ofrecido</th>
               <th>Enfoque</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <thead>
+            {{-- <thead> --}}
                 @foreach ($practica as $practicas)
                 <tr>
                     <td> {{$practicas->alumnoid}}</td>
@@ -43,7 +44,7 @@
                        class="btn waves-effect waves-light" style="background-color: #253e85;">Evaluar</a>
                     </td>
                 @endforeach
-            </thead>
+            {{-- </thead> --}}
           </tbody>
         </table>
       </div>

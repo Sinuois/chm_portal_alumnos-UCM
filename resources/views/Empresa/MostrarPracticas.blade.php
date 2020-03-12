@@ -25,6 +25,7 @@
 @endsection
 
 @section('body')
+
 @if(session('errores'))
   <div class="card-panel teal accent-1">
     Practica Profesional creada correctamente
@@ -42,44 +43,49 @@
 @endif
 <br>
 <div class="container">
-  <div class="card-content center">
-    <table class="table-border table-striped responsive-table">
+  <div class="card-panel center">
+    <div class="header">
+      <h4 class="title">Lista de Prácticas</h4>
+    </div>
+    <table class="table-border table-striped responsive-table centered">
       <thead>
         <tr>
           <th>Actividad Principal</th>
           <th>Enfoque y conocimientos</th>
           <th>Fecha Publicacion</th>
           <th>Estado</th>
-          <th></th>
+          {{-- <th>Acción</th> --}}
         </tr>
       </thead>
       <tbody>
-        <thead>
+       
           @foreach ($Practicas as $practica)
-            <tr>
+            <tr >
               <form action="{{url('/empresa/practicas/mostrar')}}" method="post">
                   <input name="id" value={{$practica->id}} type="hidden">
-                  <td> {{$practica->Actividad1}}</td>
-                  <td> {{$practica->Enfoque}}</td>
+                  <td style="text-align: center"> {{$practica->Actividad1}}</td>
+                  <td style="text-align: center"> {{$practica->Enfoque}}</td>
                   @php
                       $tiempo = \Carbon\Carbon::parse($practica->updated_at)->diffForHumans();
                   @endphp
-                  <td> {{ucfirst($tiempo)}} </td>
-                  <td> {{$practica->Estado}}</td>
-                  <td><button name="view_button" id="view_button" class="waves-effect orange btn" type="submit">
+                  <td style="text-align: center"> {{ucfirst($tiempo)}} </td>
+                  <td style="text-align: center"> {{$practica->Estado}}</td>
+                  {{-- <td style="text-align: center"><button name="view_button" id="view_button" class="waves-effect orange btn" type="submit">
                     <i class="material-icons">visibility</i></button>                    
                     <button name="update_button" class="waves-effect blue btn" type="submit">
                     <i class="material-icons" >edit</i></button>
                     <button name="delete_button" class="waves-effect red btn" type="submit">
                     <i class="material-icons">cancel</i></button>
-              </button></form></td>
+              </button></td> --}}
+            </form>
           @endforeach
-        </thead>
       </tbody>
     </table>
   </div>
 </div>
 
+
+</div>
 @endsection
         
 @section('scripts')

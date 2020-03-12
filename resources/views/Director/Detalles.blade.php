@@ -10,11 +10,11 @@
 @endsection
 
 @section('body')
-    <div class="content">
+    <div class="container">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card-panel center">
                             <div class="header">
                                 <h4 class="title">Tesis inscritas</h4>
                             </div>
@@ -34,7 +34,6 @@
                                                               </tr>
                                                             </thead>
                                                             <tbody>
-                                                              <thead>
                                                                      @foreach ($inscripciones as $inscripcion)
                                                                 
                                                                           <tr>
@@ -48,8 +47,6 @@
                                                                      
                                                                       @endforeach
                                                                    
-                                                              </thead>
-
                                                             </tbody>
                                                 </table>
                             </table>

@@ -24,7 +24,7 @@
         </div>
     @endif
     <div class="card-panel center">
-      <h5 class="center-align black-text text-darken-2">Creación De Salas</h5>
+      <h4 class="center-align black-text text-darken-2">Creación De Salas</h4>
       <div class="row">
         <div class="input-field col s12">
           <label for="disabled" class="black-text text-darken-2">Nombre de la sala</label>

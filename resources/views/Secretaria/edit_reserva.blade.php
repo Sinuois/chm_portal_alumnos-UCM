@@ -57,7 +57,7 @@
       <div class="row">
         <div class="input-field col s12">
           {{-- <input value="" id="disabled" type="hidden" class="validate" style="display:none"> --}}
-          <h6 class="center-align black-text text-darken-2">Formulario De Reservas</h6>
+          <h4 class="center-align black-text text-darken-2">Formulario De Reservas</h4>
         </div>
       </div>
       <div class="row">

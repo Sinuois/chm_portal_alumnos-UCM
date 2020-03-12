@@ -15,12 +15,13 @@
 @section('body')
   {{-- Contenido --}}
 
-
+<div class="container">
+  <div class="card-panel center">
   <center>
-    <h1>SOLICITUDES DE TOMA DE RAMOS</h1>
+    <h4>Solicitudes de Toma de Ramos</h4>
     <div class="container">
       <center>
-        <table id="user_table" class="table table-striped">
+        <table id="user_table" class="table table-striped centered">
         <center>
           <th>ID</th>
           <th class="center">Alumno</th>
@@ -81,6 +82,8 @@
 
       </center>
 </div>
+
+<br>
 
 <a href="{{route('toma.decisionToma2')}}" class="btn btn"> Menú pricipal</a>
 @endsection

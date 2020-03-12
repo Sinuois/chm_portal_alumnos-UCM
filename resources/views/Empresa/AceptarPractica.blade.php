@@ -16,8 +16,9 @@
             </div>
         </div>
     </div>
-    <div class="header">
+    <div class="header center">
         <h4 class="title">Lista de Postulaciones</h4>
+        <br>
       </div>
     @forelse ($Coleccion as $postulacion)
     <div class="row">
@@ -50,7 +51,7 @@
     @empty
         
     @endforelse
-  
+  <br>
     <div class="container">
         <div class="center">
             @include('layout.pagination')

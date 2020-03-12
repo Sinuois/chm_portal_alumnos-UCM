@@ -14,30 +14,36 @@
 {{-- Aqui trabajamos todo el contenido de la vista --}}
 @section('body')
   {{-- Contenido --}}
-
-
+  <div class="container section">
+    <div class="card center">
   <center>
-    <h1>ASIGNATURAS CARRERA</h1>
-    <div class="container">
+    <h4>Asignaturas Carrera</h4>
+    {{-- <div class="container"> --}}
       <center>
-        <table id="user_table" class="table table-striped">
+        <table id="user_table" class="table table-striped centered">
+        <thead>
+          <th></th>
         <th>ID</th>
           <th>Código</th>
           <th>Nombre</th>
           <th>Creditos</th>
           <th>Semestre</th>
+          <th></th>
           <th>Editar</th>
           <th>Eliminar</th>
+          <th></th>
           <th></th>
         </thead>
         <tbody>
          @foreach($muestracursos as $muestracurso)
             <tr>
+              <td></td>
              <td>{{$muestracurso->id }}</td>
               <td>{{$muestracurso->codigo }}</td>
               <td>{{$muestracurso->nombre }}</td>
               <td>{{$muestracurso->creditos }}</td> 
               <td>{{$muestracurso->semestre}}</td> 
+              <td></td>
               <td>  
                   <!-- MODAL EDITAR CURSO-->
                   <div class="container section">
@@ -79,20 +85,22 @@
 
          <div id="idModal" class="modal">          
            <div class="modal-content">
+             <div class="container">
             <form action="{{ route('curso.guardado') }}" method="POST">
               @csrf
-              <h3>FORMULARIO NUEVO CURSO</h3>
-              <h5>Nombre</h5>
+              <h4>Formulario Creación de Curso</h4>
+              <h6>Nombre</h6>
               <input type="text" id="nombre" name="nombre" required>
-              <h5>Codigo</h5>
+              <h6>Codigo</h6>
               <input type="text" id="codigo" name="codigo" required>
-              <h5>Creditos</h5>
+              <h6>Creditos</h6>
               <input type="text" id="creditos" name="creditos" required>
-              <h5>Semestre</h5>
+              <h6>Semestre</h6>
               <input type="text" id="semestre" name="semestre" required>
 
                 <button class="btn btn-info" onclick="M.toast({html: 'Ramo  Agregado exitosamente', displayLenght: 4000})" type="submit">Añadir</button>
              </form>
+            </div>
            </div>
          </div>
 

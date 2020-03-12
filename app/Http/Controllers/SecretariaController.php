@@ -17,6 +17,7 @@ use PDF;
 use Mail;
 use App\Mail\MailMensaje;
 Use Config;
+use Auth;
 
 
 class SecretariaController extends Controller
@@ -129,7 +130,12 @@ class SecretariaController extends Controller
         Config::set('mail.port', 587);
       }      
       $destinatarios = Destinatario::pluck('correo'); //Obtener un arreglo de correos, sacados de la tabla de destinatarios
-      Mail::to($destinatarios)->send(new MailMensaje($request->input('mensaje')));
+      $mensaje = $request->input('mensaje');
+      $enviado_por = ' Enviado por secretaria ';
+      $nombres = Auth::user()->nombres;
+      $apellidos =  Auth::user()->apellidos;
+      $mensaje = $mensaje.$enviado_por.' '.$nombres.' '.$apellidos.'.';
+      Mail::to($destinatarios)->send(new MailMensaje($mensaje));
       return redirect('/home');
     }
 
