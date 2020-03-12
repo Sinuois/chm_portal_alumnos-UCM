@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col s24 m13">
-    <div class="card-panel" style="background-color: #253e85;">
+    <div class="card-panel" style="background-color: #253e85; position: relative; left: 400px">
       <span class="white-text">Revisa en detalle la oferta de practica, luego de la selección se bloqueará la selección de practicas.
       </span>
     </div>

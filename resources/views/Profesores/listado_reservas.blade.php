@@ -29,6 +29,7 @@
                                           </thread>
                                       <tbody>
                                       @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
+                                      
                                         @if($reser->id_user == ( Auth::user()->id))
                                           @if( $reser->estado == 1 or $reser->estado == 3)
                                             <tr>
@@ -65,6 +66,7 @@
                         </div>
                     </div>
     </div>
+
 @endsection
 
 @section('scripts')
