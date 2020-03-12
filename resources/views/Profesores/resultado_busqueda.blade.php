@@ -10,23 +10,24 @@
 @endsection
 
 @section('body')
-    <div class="content">
+    <div class="container">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
+                            <div class="header center">
+                              <br>
                                 <h4 class="title">Resultado de la Busquedas</h4>
                             </div>
                             <div class="content">
                               <form>
-                                  <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
+                                  <div class="content table-responsive  centered">
+                                      <table class="table table-hover table-striped centered">
+                                        <thead>
                                           <th>Nombre Sala</th>
                                           <th>Capacidad</th>
                                           <th>Accion</th>
-                                          </thread>
+                                        </thead>
                                       <tbody>
                                         <!--  -->
                                         @foreach($salas as $sala) <!-- recorremos las salas -->

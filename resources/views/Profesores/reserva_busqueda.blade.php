@@ -25,10 +25,10 @@
         </div>
     @endif
     <div class="card-panel center">
-      <h5 class="center-align black-text text-darken-2">Formulario De Reservas</h5>
+      <h4 class="center-align black-text text-darken-2">Formulario De Reservas</h4>
       <div class="row">
         <div class="input-field col s12">
-          <label for="disabled" class="black-text text-darken-2">Nombre de la sala</label>
+          <label for="disabled" class="black-text text-darken-2" >Nombre de la sala</label>
           <input type="text" name="nombre_sala" class="form-control" value="{{$nombre}}" readonly="readonly" required>
         </div>
       </div>

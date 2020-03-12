@@ -18,15 +18,14 @@
                             </div>
                             <div class="content">
                               <form>
-                                  <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
-                                          <th>Nombre Sala</th>
-                                          <th>Bloque</th>
-                                          <th>Dia</th>
-                                          <th>Fecha Inicio</th>
-                                          <th>Fecha Salida</th>
-                                          </thread>
+                                  <div class="content table-responsive table-full-width centered">
+                                      <table class="table table-hover table-striped centered" >
+                                          <th style="text-align: center" >Nombre Sala</th>
+                                          <th style="text-align: center">Bloque</th>
+                                          <th style="text-align: center">Dia</th>
+                                          <th style="text-align: center">Fecha Inicio</th>
+                                          <th style="text-align: center">Fecha Salida</th>
+                                          
                                       <tbody>
                                       @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
                                       

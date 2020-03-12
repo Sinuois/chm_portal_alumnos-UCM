@@ -15,7 +15,7 @@
 <div class="container section">
   <div class="col s24 m13">
     <div class="card-panel centered" style="background-color: #253e85;">
-      <span class="white-text center">En esta sección se encuentra el detalle de practica en revision y los postulantes actuales que posee.
+      <span class="white-text ">En esta sección se encuentra el detalle de practica en revision y los postulantes actuales que posee.
       </span>
     </div>
   </div>
@@ -30,25 +30,26 @@
       <h4 class="title">Detalle Práctica</h4>
     </div>
 
-      <table class="table-border table-striped responsive-table">
+      <table class="table-border table-striped responsive-table centered" >
         
-          <tr>
-            <th>Empresa</th>
-            <th>Actividad Principal</th>
-            <th>Actividad Secundaria</th>
-            <th>Actividad Terciaria</th>
-            <th>Actividad Cuarta</th>
-            <th>Desde:</th>
-            <th>Hasta:</th>
-            <th>Puesto Ofrecido</th>
-            <th>Enfoque</th>
-            <th></th>
+          <tr >
+            <th style="text-align: center">Empresa</th>
+            <th style="text-align: center">Actividad Principal</th>
+            <th style="text-align: center">Actividad Secundaria</th>
+            <th style="text-align: center">Actividad Terciaria</th>
+            <th style="text-align: center">Actividad Cuarta</th>
+            <th style="text-align: center">Desde:</th>
+            <th style="text-align: center">Hasta:</th>
+            <th style="text-align: center">Puesto Ofrecido</th>
+            <th style="text-align: center">Enfoque</th>
+            <th style="text-align: center"></th>
+            <th style="text-align: center"></th>
           </tr>
         
         <tbody>
           
               @foreach ($Practicas as $practica)
-                  <form name="FormEliminarPractica" action={{route('EliminarPractica')}} method="post">
+                  <form name="FormEliminarPractica" action={{route('EliminarPractica')}} method="post" >
                     {{csrf_field()}}
                   <td> {{$practica->empresa->nombres}}</td>
                   <td> {{$practica->Actividad1}}</td>
@@ -59,6 +60,7 @@
                   <td> {{$practica->HorasHasta}}</td>
                   <td> {{$practica->PuestoOfrecido}}</td>
                   <td> {{$practica->Enfoque}}</td>
+                  <th style="text-align: center"></th>
                   <input type="hidden" name="idpractica" value={{$practica->id}}>
                   <td><a class="btn waves-effect waves-light red darken-2 btn modal-trigger" href="#modal2" >Eliminar</a>
                   </form>
@@ -68,19 +70,19 @@
       </table>
       <br>
       <h5 class="center">Postulantes</h5>
-      <table class="table-border table-striped responsive-table">
+      <table class="table-border table-striped responsive-table  centered">
         
-          <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Email</th>
-            <th>Dirección</th>
-            <th>Celular</th>
-            <th>Ingreso</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+          <tr >
+            <th style="text-align: center">Nombres</th>
+            <th style="text-align: center">Apellidos</th>
+            <th style="text-align: center">Email</th>
+            <th style="text-align: center">Dirección</th>
+            <th style="text-align: center">Celular</th>
+            <th style="text-align: center">Ingreso</th>
+            <th style="text-align: center"></th>
+            <th style="text-align: center"></th>
+            <th style="text-align: center"></th>
+            <th style="text-align: center"></th>
           </tr>
        
         <tbody>

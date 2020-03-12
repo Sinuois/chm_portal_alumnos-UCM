@@ -12,8 +12,9 @@
 
 @section('body')
 <div>
-  <div class="row">
-    <div class="col s12 m8">
+  <div class="container section">
+    <div class="container section">
+        <div class="col s12 m8">
       <div class="card-panel" style="background-color: #253e85;">
         <span class="white-text">Bienvenido {{Auth::user()->nombres}} aqui se muestran las practicas que actualmente se encuentran en curso.
         </span>
@@ -21,9 +22,12 @@
     </div>
   </div>
   <div class="container">
-    <div class="card-content  center">
-        <table class="table-border table-striped responsive-table">
-          <thead>
+    <div class="card-panel  center">
+      <div class="header center">
+        <h4 class="title">Prácticas en Curso</h4>
+      </div>
+        <table class="table-border table-striped responsive-table centered" >
+          
             <tr>
               <th>Alumno</th>
               <th>Empresa</th>
@@ -31,9 +35,7 @@
               <th>Fecha Inicio</th>
               <th></th>
             </tr>
-          </thead>
           <tbody>
-            <thead>
                 @foreach ($Coleccion as $practica)
                   <tr>
                     <td> {{$practica->alumno->nombres}}</td>
@@ -45,8 +47,11 @@
                     </td>
                   <div id="modalpractica{{$practica->id}}" class="modal">
                       <div class="modal-content">
+                        <div class="header center">
+                          <h5 class="title">Datos Estudiante</h5>
+                        </div>
                         <div class="">
-                          <div class="row blue darken-2 z-depth-1" style="text-align: left">
+                          <div class="row blue darken-2 z-depth-1" style="text-align: center">
                               <div class="col s3">
                                   <b>Nombre</b>
                               </div>
@@ -60,7 +65,7 @@
                                   <b>Celular</b>
                               </div>
                           </div>
-                          <div class="row grey lighten-2 z-depth-1" style="text-align: left">
+                          <div class="row grey lighten-2 z-depth-1" style="text-align: center">
                               <div class="col s3">
                                   <h6>{{$practica->alumno->nombres}}</h6>
                               </div>
@@ -74,7 +79,11 @@
                                   <h6>{{$practica->alumno->celular}}</h6>
                               </div>
                           </div>
-                          <div class="row  blue darken-2 z-depth-1" style="text-align: left">
+                          <br>
+                          <div class="header center">
+                            <h5 class="title">Datos Empresa</h5>
+                          </div>
+                          <div class="row  blue darken-2 z-depth-1" style="text-align: center">
                               <div class="col s3">
                                   <b>Empresa</b>
                               </div>
@@ -88,7 +97,7 @@
                                   <b>Dirección</b>
                               </div>
                           </div>
-                          <div class="row grey lighten-2 z-depth-1" style="text-align: left" >
+                          <div class="row grey lighten-2 z-depth-1" style="text-align: center">
                               <div class="col s3">
                                   <h6>{{$practica->practica->empresa->nombres}}</h6>
                               </div>
@@ -137,7 +146,6 @@
                       </div>
                   </div>
                 @endforeach
-            </thead>
           </tbody>
         </table>
         <div class="container">

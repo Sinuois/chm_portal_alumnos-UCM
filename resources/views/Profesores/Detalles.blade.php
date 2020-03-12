@@ -10,20 +10,22 @@
 @endsection
 
 @section('body')
-    <div class="content">
+    <div class="container">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
+                            <div class="header center">
+                              <br>
                                 <h4 class="title">Tesis inscritas</h4>
+                                <br>
                             </div>
                             <div class="content">
                               <form>
                                       <table class="table table-bordered">
 
 
-                                     <table class="table-border table-striped responsive-table">
+                                     <table class="table-border table-striped responsive-table centered">
                                                             <thead>
                                                               <tr>
                                                                 <th>Codigo Inscripcion</th>
@@ -34,22 +36,19 @@
                                                               </tr>
                                                             </thead>
                                                             <tbody>
-                                                              <thead>
                                                                      @foreach ($inscripciones as $inscripcion)
                                                                 
                                                                           <tr>
-                                                                            <td>{{$inscripcion->CodigoIncripcion}} </td>
-                                                                            <td>{{$inscripcion->Semestre}} </td>
-                                                                            <td>{{$inscripcion->FechaInscripcion}} </td>
-                                                                            <td>{{$inscripcion->Estado}} </td>
-                                                                            <td>
+                                                                            <td style="text-align: center">{{$inscripcion->CodigoIncripcion}} </td>
+                                                                            <td style="text-align: center">{{$inscripcion->Semestre}} </td>
+                                                                            <td style="text-align: center">{{$inscripcion->FechaInscripcion}} </td>
+                                                                            <td style="text-align: center">{{$inscripcion->Estado}} </td>
+                                                                            <td style="text-align: center">
                                                                               <a href="{{ url("/profesor/inscripciontesis/{$inscripcion->id}")}}" class="btn waves-effect waves-light" style="background-color: #253e85;">revisar</a>
                                                                           </td>
                                                                      
                                                                       @endforeach
                                                                    
-                                                              </thead>
-
                                                             </tbody>
                                                 </table>
                             </table>

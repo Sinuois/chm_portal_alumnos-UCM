@@ -12,6 +12,7 @@
 
 <br>
 <div class="container">
+  <div class="card-panel center"> 
     <form class="col s12" action="{{url('/profesor/inscripcion/guardar')}}" method="post" >
       @csrf
       <h5 class="center-align black-text text-darken-2">Inscripcion de tesis</h5>
@@ -112,6 +113,7 @@
       <a class="waves-effect red darken-1 btn" href="http://localhost:8000/profesor" >Cancel</a>
       <button class="btn waves-effect waves-light" type="submit">Enviar</button>
     </form>
+</div>
 </div>
 @endsection
         

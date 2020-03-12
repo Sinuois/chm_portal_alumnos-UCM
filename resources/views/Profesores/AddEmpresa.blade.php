@@ -5,11 +5,12 @@
 @endsection
 
 @section('body')
-<div class="row">
-    <div class="col s8 offset-s2">
-        <div style="font-size:3vw;text-align:center;">Formulario para ingreso de nuevas empresas</div>
-    </div>
+<div class="container centered">
+  <div class="card-panel center">
+<div class="header center">
+  <h4 class="title">Formulario para Ingreso de Nuevas Empresas</h4>
 </div>
+<br>
 <div class="row">
     <form class="col s12 " action="/profesor/coordinador/addE" method="post">
     {{ csrf_field() }}
@@ -76,6 +77,8 @@
       </div>
     </form>
   </div>
+  </div>
+</div>
         
 
   
