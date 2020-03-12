@@ -346,6 +346,7 @@ class EstudiantesController extends Controller
         $tomacurso = new TomaBotaCurso();
         $tomacurso->user_id = $user->id;
         $tomacurso->curso_id = $laid;
+
         $tomacurso->save();
         return redirect()->route('usuario.bota');
     } 

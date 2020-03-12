@@ -14,13 +14,16 @@
 {{-- Aqui trabajamos todo el contenido de la vista --}}
 @section('body')
   {{-- Contenido --}}
+<div class="container section">
+  <div class="card-panel center">
 
+    <div class="header">
+      <h4 class="title">Mi Solicitud para Botar Ramos</h4>
+    </div>
 
-  <center>
-    <h1>MI SOLICITUD PARA BOTAR RAMOS</h1>
-    <div class="container">
-      <center>
-        <table id="user_table" class="table table-striped">
+    <div class="content centered">
+        <table id="user_table" class="table table-striped centered">
+          <thead class="centered ">
           <th>ID</th>
           <th>Código</th>
           <th>Curso</th>
@@ -53,9 +56,8 @@
             <form action="{{ route('usuario.guarda3') }}" method="POST">
               @csrf
 
-              <h3> Ingrese el curso</h3>
-            
-              
+              <h5> Ingrese el curso</h5>
+           
               <!-- SELECT-->
                 <div class="input-field col s12">
                   <select name="nombre">
@@ -64,7 +66,17 @@
                     @endforeach
                   </select>
                 </div>
-
+               
+                <h5> Ingrese el motivo</h5>
+                <div class="input-field col s12">
+                  <select name="motivo"> 
+                    <option> {{ $curso->motivo}}</option>
+                  
+                    <option value="error_al_tomar">Error al tomar</option>
+                    <option value="motivos_personales">Motivos Personales</option>
+                    <option value="falta_de_tiempo">Falta de Tiempo</option>
+                  </select>
+                </div>
 
 
                 <button class="btn btn-info" onclick="M.toast({html: 'solicitud enviada exitosamente', displayLenght: 4000})" type="submit">Añadir</button>
@@ -73,7 +85,7 @@
          </div>
 
        </div>
-      </center>
+
 </div>
 
   

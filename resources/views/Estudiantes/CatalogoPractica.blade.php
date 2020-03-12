@@ -21,14 +21,17 @@
       </div>
     </div>
   </div>
+
   <div class="container">
-    <div class="card-panel  center">
+
+    <div class="card-panel center">
       <div class="header">
         <h4 class="title">Listado De Prácticas</h4>
     </div>
+
     <div class="content">
-        <table class="table table-striped table-responsive table-hover centered">
-          <thead class="centered">
+        <table class="table table-striped table-responsive table-hover centered ">
+          <thead class="centered ">
             <tr>
               <th>Empresa</th>
               <th>Actividad Principal</th>
@@ -38,9 +41,9 @@
               <th>Detalles</th>
             </tr>
           </thead>
-          <div class="center">
+          <div class="center ">
           <tbody>
-            <thead>
+            {{-- <thead> --}}
                 @foreach ($Coleccion as $practica)
                   <tr>
                     <td style="text-align: center"> {{$practica->empresa->nombres}}</td>
@@ -52,16 +55,19 @@
                       <a href="{{route('DetallePractica',['id' => $practica->id])}}" class="btn waves-effect waves-light" style="background-color: #253e85; text-align: center">Click Aquí</a>
                     </td>
                 @endforeach
-            </thead>
+            {{-- </thead> --}}
           </tbody>
         </div>
         </table>
+
         <div class="container">
           <div class="centered">
           @include('layout.pagination')
           </div>
         </div>
+
     </div>
+
   </div>
 </div>
 

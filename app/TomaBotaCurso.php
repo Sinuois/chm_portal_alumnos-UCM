@@ -11,7 +11,8 @@ class TomaBotaCurso extends Model
 	protected $fillable = [
 		'id',
     	'user_id',
-    	'curso_id',
+		'curso_id',
+		'motivo',
 		'estado',
 		
 	];  
