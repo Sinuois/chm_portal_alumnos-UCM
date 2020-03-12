@@ -12,29 +12,33 @@
 
 @section('body')
 <div>
-  <div class="row">
+  <div class="container section">
     <div class="col s12 m8">
-      <div class="card-panel" style="background-color: #253e85;">
+      <div class="card-panel " style="background-color: #253e85;">
         <span class="white-text">Bienvenido {{Auth::user()->nombres}} aqui se muestran las practicas que actualmente cuentan con postulaciones abiertas.
         </span>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="card-content  center">
-        <table class="table-border table-striped responsive-table">
-          <thead>
-            <tr>
-              <th>Empresa</th>
-              <th>Actividad Principal</th>
-              <th>Enfoque y conocimientos</th>
-              <th>Fecha Publicacion</th>
-              <th>Cantidad de Solicitudes</th>
-              <th></th>
+  <div class="container centered">
+    <div class="card-panel center">
+      <div class="header">
+        <h4 class="title">Catálogo de Prácticas</h4>
+      </div>
+      <div class="content centered">
+        <table class="table-border table-striped responsive-table centered" >
+          
+            <tr >
+              <th style="text-align: center">Empresa</th>
+              <th style="text-align: center">Actividad Principal</th>
+              <th style="text-align: center">Enfoque y conocimientos</th>
+              <th style="text-align: center">Fecha Publicacion</th>
+              <th style="text-align: center">Cantidad de Solicitudes</th>
+              <th style="text-align: center"></th>
             </tr>
-          </thead>
+          
           <tbody>
-            <thead>
+            
                 @foreach ($Coleccion as $practica)
                   <tr>
                     <td> {{$practica->empresa->nombres}}</td>
@@ -46,9 +50,10 @@
                       <a href="{{route('DetalleCoordinacionPractica',['id' => $practica->id])}}" class="btn waves-effect waves-light" style="background-color: #253e85;">Detalles</a>
                     </td>
                 @endforeach
-            </thead>
+           
           </tbody>
         </table>
+      </div>
         <div class="container">
           <div class="centered">
           @include('layout.pagination')

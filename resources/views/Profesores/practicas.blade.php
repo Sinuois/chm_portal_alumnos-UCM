@@ -5,8 +5,8 @@
 @endsection
 
 @section('body')
-<div class="container">
-    <div class="row">
+<div class="container section">
+    <div class="container section">
         <div class="col s12 m8">
             <div class="card-panel" style="background-color: #253e85;">
                 <span class="white-text">Bienvenido {{Auth::user()->nombres}} 
@@ -16,6 +16,9 @@
             </div>
         </div>
     </div>
+    <div class="header center">
+        <h4 class="title">Lista de Postulaciones</h4>
+      </div>
     @forelse ($Coleccion as $postulacion)
     <div class="row">
         <div class="col s2"></div>

@@ -12,19 +12,26 @@
 
 @section('body')
 
-<div class="row">
+<div class="container section">
   <div class="col s24 m13">
-    <div class="card-panel" style="background-color: #253e85;">
-      <span class="white-text">En esta sección se encuentra el detalle de practica en revision y los postulantes actuales que posee.
+    <div class="card-panel centered" style="background-color: #253e85;">
+      <span class="white-text center">En esta sección se encuentra el detalle de practica en revision y los postulantes actuales que posee.
       </span>
     </div>
   </div>
 </div>
 
+
+
 <div class="container">
-  <div class="card-content center">
+  <div class="card-panel center">
+
+    <div class="header">
+      <h4 class="title">Detalle Práctica</h4>
+    </div>
+
       <table class="table-border table-striped responsive-table">
-        <thead>
+        
           <tr>
             <th>Empresa</th>
             <th>Actividad Principal</th>
@@ -37,9 +44,9 @@
             <th>Enfoque</th>
             <th></th>
           </tr>
-        </thead>
+        
         <tbody>
-          <thead>
+          
               @foreach ($Practicas as $practica)
                   <form name="FormEliminarPractica" action={{route('EliminarPractica')}} method="post">
                     {{csrf_field()}}
@@ -56,12 +63,13 @@
                   <td><a class="btn waves-effect waves-light red darken-2 btn modal-trigger" href="#modal2" >Eliminar</a>
                   </form>
               @endforeach
-          </thead>
+          
         </tbody>
       </table>
-      <h5 class="left">Postulantes</h5>
+      <br>
+      <h5 class="center">Postulantes</h5>
       <table class="table-border table-striped responsive-table">
-        <thead>
+        
           <tr>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -74,9 +82,9 @@
             <th></th>
             <th></th>
           </tr>
-        </thead>
+       
         <tbody>
-          <thead>
+          
               @foreach ($Postulantes as $Postulante)
                   <tr>
                   <td> {{$Postulante->nombres}}</td>
@@ -91,7 +99,7 @@
                   <input type="hidden" name="idpostulante" value={{$Postulante->id}}>
                   </tr>
               @endforeach
-          </thead>
+          
         </tbody>
       </table>
   </div>
