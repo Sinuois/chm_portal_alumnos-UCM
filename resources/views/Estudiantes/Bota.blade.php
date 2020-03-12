@@ -66,8 +66,8 @@
                     @endforeach
                   </select>
                 </div>
-               
-                <h5> Ingrese el motivo</h5>
+               {{-- No se puede ingresar motivo correctamente --}}
+                {{-- <h5> Ingrese el motivo</h5>
                 <div class="input-field col s12">
                   <select name="motivo"> 
                     <option> {{ $curso->motivo}}</option>
@@ -76,7 +76,7 @@
                     <option value="motivos_personales">Motivos Personales</option>
                     <option value="falta_de_tiempo">Falta de Tiempo</option>
                   </select>
-                </div>
+                </div> --}}
 
 
                 <button class="btn btn-info" onclick="M.toast({html: 'solicitud enviada exitosamente', displayLenght: 4000})" type="submit">Añadir</button>

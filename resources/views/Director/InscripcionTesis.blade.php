@@ -14,13 +14,10 @@
 <div class="container">
     <form class="col s12" action="{{url('/director/inscripcion/guardar')}}" method="post" >
       @csrf
-      <h5 class="center-align black-text text-darken-2">Inscripcion de tesis</h5>
-
+      <h4 class="center-align black-text text-darken-2">Inscripcion de tesis</h4>
 
      @foreach ($inscripciones as $inscripcion)
-
-       
-      
+     
 
           <input name="id" type="hidden" value='{{$inscripcion->id}}'  >
 

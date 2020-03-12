@@ -12,15 +12,16 @@
 
 @section('body')
 @if(session('errores'))
-  <div class="card-panel teal accent-1">
+  <div class="card-panel teal accent-1 centered">
     Inscripcion creada exitosamente
   </div>
 @endif
 <br>
-<div class="container">
+<div class="container section centered">
+    <div class="card-panel centered">
     <form class="col s12" action="{{url('/estudiante/inscripcion/guardar')}}" method="post" >
       @csrf
-      <h5 class="center-align black-text text-darken-2">Inscripcion de tesis</h5>
+      <h4 class="center-align black-text text-darken-2">Inscripción de tesis</h4>
 
 
       <div class="row">
@@ -74,9 +75,10 @@
             <span class="helper-text" data-error="wrong" data-success="okey"></span>
       </div>
 
-      <a class="waves-effect red darken-1 btn" href="http://localhost:8000/Estudiantes" >Cancel</a>
-      <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+      <a class="waves-effect red darken-1 btn centered" style="position: relative; left: 430px"href="http://localhost:8000/Estudiantes" >Cancel</a>
+      <button style="position: relative; left: 430px"class="btn waves-effect waves-light centered" type="submit">Enviar</button>
     </form>
+  </div>
 </div>
 @endsection
         

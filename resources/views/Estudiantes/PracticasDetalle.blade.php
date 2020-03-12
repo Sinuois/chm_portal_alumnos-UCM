@@ -22,9 +22,9 @@
 </div>
 
 <div class="container">
-  <div class="card-content center ">
+  <div class="card-panel center ">
       <table class="table-border table-striped responsive-table">
-        <thead>
+        
           <tr>
             <th>Empresa</th>
             <th>Actividad Principal</th>
@@ -37,9 +37,7 @@
             <th>Enfoque</th>
             <th></th>
           </tr>
-        </thead>
         <tbody>
-          <thead>
               @foreach ($Practicas as $practica)
                   <form action={{route('solicitudpractica')}} method="post">
                     {{csrf_field()}}
@@ -59,7 +57,7 @@
                   <a href="/estudiante/practicasofertadas" class="btn waves-effect waves-light red" >Cancelar</a> </td>
                   </form>
               @endforeach
-          </thead>
+        
         </tbody>
       </table>
   </div>

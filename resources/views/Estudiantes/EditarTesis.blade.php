@@ -15,12 +15,12 @@
   </div>
 @endif
 <br>
-<div class="container">
-
+<div class="container section">
+  <div class="card-panel center">
 
     <form class="col s12" action="{{url('/estudiante/inscripciontesis/listado/guardar')}}" method="post" >
       @csrf
-      <h5 class="center-align black-text text-darken-2">Inscripcion de tesis</h5>
+      <h4 class="center-align black-text text-darken-2">Inscripción de tesis</h4>
 
    
         @foreach($inscripciones as $inscripcion) 
@@ -85,6 +85,7 @@
       <a class="waves-effect red darken-1 btn" href="http://localhost:8000/Estudiantes" >Cancel</a>
       <button class="btn waves-effect waves-light" type="submit">Enviar</button>
     </form>
+</div>
 </div>
 @endsection
         

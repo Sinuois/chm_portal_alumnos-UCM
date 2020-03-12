@@ -37,11 +37,10 @@
     @endif
 
     @if($contador!='0')
-    <div class="content">
-            <div class="container-fluid">
+    <div class="container section">
+            <div class="card-panel center">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
                             <div class="header">
                                 <h4 class="title">Inscripciones de tesis aprobadas</h4>
                             </div>
@@ -75,7 +74,7 @@
                               </form>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
     </div>
