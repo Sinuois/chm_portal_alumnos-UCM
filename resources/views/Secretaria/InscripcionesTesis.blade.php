@@ -10,15 +10,16 @@
 @endsection
 
 @section('body')
-    <div class="content">
-            <div class="container-fluid">
+    <div class="container">
+            <div class="card-panel center">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="container-fluid">
                             <div class="header">
                               
                               <div>
                                   <h4 class="title">Inscripciones de tesis aprobadas</h4>
+                                  <br>
 
                               </div>
                               <div>
@@ -26,13 +27,17 @@
 
                                     <form action="/secretaria/InscripcionesTesisAprobadas/busqueda" method="POST" >
                                         {{ csrf_field() }}
-                                        
+                                          
                                             <input type="text" class="form-control" id="rut" name="rut"
                                                 placeholder="Ingrese rut ej: 1.111.111-1"> <span class="input-group-btn">
                                                 <button type="submit" class="btn waves-effect waves-light" style="background-color: #253e85;">Buscar</button>
                                             </span>
+                                            <br>
 
                                     </form>
+
+                                    <br>
+                                    <br>
 
                                   
                                       
@@ -41,15 +46,15 @@
                             <div class="content">
                               <form>
                                   <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
+                                      <table class="table table-hover table-striped centered">
+                                          <thead>
                                           <th>Nombre tesis</th>
                                           <th>Profesor ID</th>
                                           <th>Alumno ID</th>
                                           <th>Fecha inscripcion</th>
                                           <th>Descargar Formulario de inscripcion</th>
                                           <th>Descargar Acta de inscripcion</th>
-                                          </thread>
+                                          </thead>
                                       <tbody>
                                       @foreach($inscripciones as $inscripcion) 
                                       <tr>
@@ -76,7 +81,7 @@
                 </div>
             </div>
     </div>
-    <hr>
+    {{-- <hr> linea  --}}
 
 
    
