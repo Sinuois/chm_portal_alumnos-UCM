@@ -19,13 +19,13 @@
                             <div class="content">
                               <form>
                                   <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
+                                      <table class="table table-hover table-striped centered">
+                                          <thead>
                                           <th>ID</th>
                                           <th>Nombre Sala</th>
                                           <th>Capacidad</th>
                                           <th>Accion</th>
-                                          </thread>
+                                          </thead>
                                       <tbody>
                                       @foreach($salas as $sala) <!--recorre todos los registros encontrados y los muestra en la vista-->
                                       <tr>
@@ -33,7 +33,7 @@
                                       <td>{{$sala->nombre}}</td>
                                       <td>{{$sala->capacidad}}</td>
 
-                                      <td><a href="{{route('secretaria_listado_salas.destroy', $sala->id)}}" class="waves-effect red darken-1 btn"><i>Cancelar</i> <i class="material-icons">close</i></a><a href="{{route('secretaria_historial_sala.historial_sala', $sala->id)}}" class="waves-effect waves-light btn"><i class="pe-7s-trash"><i>Historial</i> </i><i class="material-icons">assignment</i></a></td>
+                                      <td><a href="{{route('secretaria_listado_salas.destroy', $sala->id)}}" class="waves-effect red darken-1 btn"><i>Cancelar</i> <i class="material-icons">close</i></a>&nbsp;<a href="{{route('secretaria_historial_sala.historial_sala', $sala->id)}}" class="waves-effect waves-light btn"><i class="pe-7s-trash"><i>Historial</i> </i><i class="material-icons">assignment</i></a></td>
 
 
                                       </tr>

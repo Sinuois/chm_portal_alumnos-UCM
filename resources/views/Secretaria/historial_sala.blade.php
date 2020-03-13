@@ -13,23 +13,24 @@
 @if($cuenta == 0)
   <div class="content center">
     <h4>La Sala No Cuenta Con Reservas</h4>
-    </br>
+    <br>
   <a  href="{{route('listado_salas')}}" class="waves-effect waves-light btn-small"><i class="pe-7s-trash">volver</i></a>
   </div>
 @else
-    <div class="content">
+    <div class="container">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
+                            <div class="header center">
+                              <br>
                                 <h4 class="title">Historial De La Sala</h4>
                             </div>
                             <div class="content">
                               <form>
                                   <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
+                                      <table class="table table-hover table-striped centered">
+                                          <thead>
                                           <th>ID Sala</th>
                                           <th>Nombre Sala</th>
                                           <th>Capacidad</th>
@@ -37,7 +38,7 @@
                                           <th>Bloque</th>
                                           <th>Fecha Ingreso</th>
                                           <th>Fecha Salida</th>
-                                          </thread>
+                                          </thead>
                                       <tbody>
 
                                         @foreach($reservas as $reserva) <!--recorre todos los registros encontrados y los muestra en la vista-->
@@ -74,10 +75,10 @@
                             </div>
                         </div>
                     </div>
-                  </br>
+                  <br>
                     <div class="content center">
                       <h5 class="title">Exportar Reporte</h5>
-                      </br>
+                      
                     <a  href="{{route('secretaria_exportar_historial.exportar_sala', $reserva->id_sala)}}" class="waves-effect waves-light btn"><i class="pe-7s-trash">Exportar</i> <i class="material-icons">assignment</i></a>
                   </div>
                 </div>

@@ -25,7 +25,7 @@
         </div>
     @endif
     <div class="card-panel center">
-      <h5 class="center-align black-text text-darken-2">Confirmar Reservas</h5>
+      <h4 class="center-align black-text text-darken-2">Confirmar Reservas</h4>
       <div class="row">
         <div class="input-field col s12">
           <label class="black-text text-darken-2">Id usuario</label>

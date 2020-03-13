@@ -10,7 +10,7 @@
 @endsection
 
 @section('body')
-    <div class="content">
+    <div class="container">
                     <div class="col-md-16">
                         <div class="card-panel center">
                             <div class="header">
@@ -19,16 +19,16 @@
                             <div class="content">
                               <form>
                                   <div class="content table-responsive table-full-width">
-                                      <table class="table table-hover table-striped">
-                                          <thread>
+                                      <table class="table table-hover table-striped centered">
+                                          <thead>
                                           <th>ID user</th>
                                           <th>ID sala</th>
                                           <th>Bloque</th>
-                                          <th>Dia</th>
+                                          <th>Día</th>
                                           <th>Fecha Inicio</th>
                                           <th>Fecha Salida</th>
-                                          <th>Accion</th>
-                                          </thread>
+                                          <th>Acción</th>
+                                          </thead>
                                       <tbody>
                                       @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
                                       <tr>
@@ -53,7 +53,7 @@
                                           @endif
                                           <td>{{$reser->fecha_ingreso}}</td>
                                           <td>{{$reser->fecha_salida}}</td>
-                                          <td> <a  href="{{route('secretaria_listado_reservas.edit', $reser->id)}}" class="waves-effect waves-light btn-small"><i class="pe-7s-pen">Aceptar</i> </a><a  href="{{route('secretaria_listado_reserva.destroy', $reser->id)}}" class="waves-effect red darken-1 btn-small"><i class="pe-7s-trash">Cancelar</i> <i class="material-icons">close</i>
+                                          <td> <a  href="{{route('secretaria_listado_reservas.edit', $reser->id)}}" class="waves-effect waves-light btn-small"><i class="pe-7s-pen">Aceptar</i> </a>&nbsp;<a  href="{{route('secretaria_listado_reserva.destroy', $reser->id)}}" class="waves-effect red darken-1 btn-small"><i class="pe-7s-trash">Cancelar</i> <i class="material-icons">close</i>
                                       @endif
                                       </tr>
                                       @endforeach

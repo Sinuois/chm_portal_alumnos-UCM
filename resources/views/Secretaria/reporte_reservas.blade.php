@@ -103,33 +103,32 @@ table {
 </style>
 
 <body>
-	<div class="navbar-header">
-		<div class="table">
+	{{-- <div class="navbar-header"> --}}
+		<div class="table centered">
 
-			 <img src="public\images\logoucm.png" border="0" width="150" height="100">
+			 <img src="images\logoucm.png" border="0" width="150" height="100">
 			 <h3 align="center" class="box-header with-border">
 				 <font face="Times New Roman " size="15">RESERVAS DE SALAS</font></h3>
-		</div>
+		{{-- </div> --}}
 	</div><br>
-	<div class="col-md-12">
-			<div class="box">
-					<div class="content">
-							<table class = "table">
-								<thead>
-									<tr>
-                    <th>ID user</th>
+	
+					{{-- <div class="content"> --}}
+					{{-- <table class = "table centered"> --}}
+								{{-- <thead> --}}
+									{{-- <tr> --}}
+                    {{-- <th>ID user</th>
                     <th>Nombre Sala</th>
                     <th>Bloque</th>
-										<th>Dia semana</th>
+					<th>Dia semana</th>
                     <th>Fecha Inicio</th>
-                    <th>Fecha Salida</th>
-									</tr>
-								</thead>
+                    <th>Fecha Salida</th> --}}
+									{{-- </tr> --}}
+								{{-- </thead> --}}
 
-								<tbody>
-									<tr>
-                  @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
-
+								{{-- <tbody> --}}
+									{{-- <tr> --}}
+                  {{-- @foreach($reserva as $reser) <!--recorre todos los registros encontrados y los muestra en la vista-->
+                    
                   @if( $reser->estado == 1 )
                     <td>{{$reser->id_user}}</td>
                     <td>{{$reser->nombre}}</td>
@@ -153,15 +152,57 @@ table {
                     <td>{{$reser->fecha_ingreso}}</td>
                     <td>{{$reser->fecha_salida}}</td>
                   @endif
+                    
+                  @endforeach --}}
+									{{-- </tr> --}}
+								{{-- </tbody> --}}
+							{{-- </table>  --}}
+						{{-- </div> --}}
+				
 
-                  @endforeach
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
 
+<table class ="table table-hover table-striped center">
+    <thead>
+        <tr>
+            <th>ID user</th>
+            <th>Nombre Sala</th>
+            <th>Bloque</th>
+            <th>Dia semana</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Salida</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($reserva as $reser)
+    <tr>
+        <td>{{$reser->id_user}}</td>
+        <td>{{$reser->nombre}}</td>
+        <td>{{$reser->bloque}}</td>
+
+        @if( $reser->dia_semana == 1)
+        <td>Lunes</td>
+        @endif
+        @if( $reser->dia_semana == 2)
+        <td>Martes</td>
+        @endif
+        @if( $reser->dia_semana == 3)
+        <td>Miercoles</td>
+        @endif
+        @if( $reser->dia_semana == 4)
+        <td>Jueves</td>
+        @endif
+        @if( $reser->dia_semana == 5)
+        <td>Viernes</td>
+        @endif
+
+        <td>{{$reser->fecha_ingreso}}</td>
+        <td>{{$reser->fecha_salida}}</td>
+    </tr>
+    @endforeach
+    </tbody>
+
+
+</table>
 
 </body>
 </html>
